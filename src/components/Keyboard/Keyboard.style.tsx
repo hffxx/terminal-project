@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 export const KeyboardContainer = styled.div`
-  width: 100vw;
-  height: 40%;
-  border: 1px solid red;
+  display: flex;
+  width: 100%;
+  height: 35%;
+  align-items: center;
+  justify-content: center;
 `;

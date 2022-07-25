@@ -11,7 +11,7 @@ export interface IMediaQueries {
   desktopL: string;
 }
 
-export default interface DefaultTheme {
+export interface ITheme {
   sizes: {
     contentWidth: string;
     mediaQueries: IMediaQueries;

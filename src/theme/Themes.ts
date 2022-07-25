@@ -1,4 +1,4 @@
-import DefaultTheme, { IMediaQueries } from "./styled";
+import { IMediaQueries, ITheme } from "./styled";
 
 const BREAKPOINTS: IMediaQueries = {
   mobileS: "@media only screen and (min-width: 361px)",
@@ -11,7 +11,7 @@ const BREAKPOINTS: IMediaQueries = {
   desktopL: "@media only screen and (min-width: 1921px)",
 };
 
-export const Theme: DefaultTheme = {
+export const Theme: ITheme = {
   sizes: {
     contentWidth: "1920px",
     mediaQueries: BREAKPOINTS,

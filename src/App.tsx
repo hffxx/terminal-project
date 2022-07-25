@@ -2,15 +2,7 @@ import { Keyboard } from "./components/Keyboard/Keyboard";
 
 export const App = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        flexDirection: "column",
-        height: "100vh",
-      }}
-    >
+    <div className="app">
       <div>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
         laboriosam, nihil incidunt voluptatibus enim vitae. Reprehenderit minus
