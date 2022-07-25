@@ -1,39 +1,75 @@
-import { lazy } from "react";
-import { Suspense } from "react";
+import { lazy, Suspense, useEffect, useState, useRef } from "react";
 import { SplineEvent } from "@splinetool/react-spline";
 import { KeyboardContainer } from "./Keyboard.style";
 import { Application } from "@splinetool/runtime";
 
-const setZoom = (spline: Application) => {
-  const width = window.innerWidth;
-  if (width < 1367) {
-    spline.setZoom(0.65);
-    return;
-  }
-  if (width < 1601) {
-    spline.setZoom(0.75);
-    return;
-  }
-  if (width < 1921) {
-    spline.setZoom(0.9);
-    return;
-  }
-  spline.setZoom(1.1);
-};
-
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
 export const Keyboard = () => {
-  const onMouseDown = (e: SplineEvent) => {
-    if (!e.target.name.includes("func")) console.log(e.target.name);
+  const keyboardRef = useRef<any>(null);
+  const [spline, setSpline] = useState<any>();
+  const onLoad = (spline: Application) => {
+    const keyboard = spline.findObjectByName("keyboard");
+    keyboardRef.current = keyboard;
+    const width = window.innerWidth;
+    setSpline(spline);
+    if (width < 600) {
+      spline.setZoom(0.55);
+      return;
+    }
+    if (width < 1367) {
+      spline.setZoom(0.65);
+      return;
+    }
+    if (width < 1601) {
+      spline.setZoom(0.75);
+      return;
+    }
+    if (width < 1921) {
+      spline.setZoom(0.9);
+      return;
+    }
+    spline.setZoom(1.1);
   };
+
+  const onMouseDown = (e: SplineEvent) => {
+    if (!e.target.name.includes("func" || "keyboard"))
+      console.log(e.target.name);
+  };
+
+  const moveObject = (pos: number) => {
+    keyboardRef.current.position.x += pos;
+  };
+  const rotateObject = (angle: number, axis: string) => {
+    console.log(keyboardRef.current.rotation);
+    if (keyboardRef.current.rotation[axis] > 0.5) {
+      return;
+    }
+    keyboardRef.current.rotation[axis] += angle;
+  };
+  const resetPos = () => {
+    console.log(keyboardRef.current);
+    keyboardRef.current.position.x = 900;
+    keyboardRef.current.position.y = -277;
+    keyboardRef.current.position.z = -100;
+    keyboardRef.current.rotation.x = 0;
+    keyboardRef.current.rotation.y = 0;
+    keyboardRef.current.rotation.z = 0;
+  };
+
   return (
     <KeyboardContainer>
+      <div>
+        <button onClick={() => moveObject(50)}>Move Left</button>
+        <button onClick={() => moveObject(-50)}>Move Right</button>
+        <button onClick={() => rotateObject(Math.PI / 45, "x")}>Rotate</button>
+        <button onClick={() => resetPos()}>Reset Pos</button>
+      </div>
       <Suspense fallback={<h1>Loading...</h1>}>
         <Spline
           scene="https://prod.spline.design/dq07Wyjzo17JOA7J/scene.splinecode"
           onMouseDown={onMouseDown}
-          onLoad={setZoom}
+          onLoad={onLoad}
         />
       </Suspense>
     </KeyboardContainer>
