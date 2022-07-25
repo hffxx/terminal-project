@@ -1,10 +1,13 @@
 import styled, { keyframes } from "styled-components";
 
 export const TerminalWrapper = styled.div`
-  max-width: 1240px;
+  max-width: 1000px;
   width: 100%;
   height: 50%;
   padding: 20px 20px 0;
+  ${({ theme }) => theme.sizes.mediaQueries.desktopL} {
+    max-width: 1240px;
+  } ;
 `;
 export const TerminalBackground = styled.div`
   padding: 1px;

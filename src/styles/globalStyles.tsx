@@ -50,7 +50,7 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    max-width: ${(props) => props.theme.sizes.contentWidth};
+    max-width: ${({ theme }) => theme.sizes.contentWidth};
     margin: 0 auto;
   }
   button {
