@@ -35,7 +35,6 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     background: none repeat scroll 0 0 transparent;
     border: medium none;
     border-spacing: 0;
-    font-size: 16px;
     font-weight: normal;
     list-style: none outside none;
     margin: 0;
@@ -43,12 +42,5 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     text-align: left;
     text-decoration: none;
     text-indent: 0;
-  }
-  .test {
-    max-width: 1400px;
-    width: 100%;
-    height: 50%;
-    margin-top: 20px;
-    padding: 20px;
   }
 `;

@@ -4,9 +4,7 @@ import { Terminal } from "./components/Terminal/Terminal";
 export const App = () => {
   return (
     <div className="app">
-      <div className="test">
-        <Terminal />
-      </div>
+      <Terminal />
       <Keyboard />
     </div>
   );
