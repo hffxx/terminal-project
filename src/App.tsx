@@ -3,7 +3,7 @@ import { Keyboard } from "./components/Keyboard/Keyboard";
 export const App = () => {
   return (
     <div className="app">
-      <div></div>
+      <div className="test">Screen</div>
       <Keyboard />
     </div>
   );

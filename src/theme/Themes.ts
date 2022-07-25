@@ -13,7 +13,7 @@ const BREAKPOINTS: IMediaQueries = {
 
 export const Theme: ITheme = {
   sizes: {
-    contentWidth: "1920px",
+    contentWidth: "2560px",
     mediaQueries: BREAKPOINTS,
   },
   colors: {},

@@ -1,22 +1,18 @@
-import { lazy, Suspense, useState, useRef } from "react";
-import { SplineEvent } from "@splinetool/react-spline";
-import { KeyboardContainer } from "./Keyboard.style";
-import { Application } from "@splinetool/runtime";
+import { useRef } from "react";
+import Spline, { SplineEvent } from "@splinetool/react-spline";
+import {
+  KeyboardContainer,
+  ButtonContainer,
+  StyledButton,
+} from "./Keyboard.style";
+import { Application, SPEObject } from "@splinetool/runtime";
 import { useWindowSize } from "usehooks-ts";
+import { BsArrowLeft, BsArrowRight, BsApp } from "react-icons/bs";
 
-const Spline = lazy(() => import("@splinetool/react-spline"));
-
-export const Keyboard = () => {
-  const keyboardRef = useRef<any>(null);
-  const { width } = useWindowSize();
-  const [spline, setSpline] = useState<any>();
-  const onLoad = (spline: Application) => {
-    const keyboard = spline.findObjectByName("keyboard");
-    keyboardRef.current = keyboard;
-    const width = window.innerWidth;
-    setSpline(spline);
+const setZoom = (spline: Application, width = window.innerWidth) => {
+  if (spline) {
     if (width < 770) {
-      spline.setZoom(1);
+      spline.setZoom(0.75);
       return;
     }
     if (width < 1367) {
@@ -24,14 +20,27 @@ export const Keyboard = () => {
       return;
     }
     if (width < 1601) {
-      spline.setZoom(0.75);
+      spline.setZoom(0.6);
       return;
     }
     if (width < 1921) {
-      spline.setZoom(0.9);
+      spline.setZoom(0.75);
       return;
     }
-    spline.setZoom(1.1);
+    spline.setZoom(0.9);
+  }
+};
+
+export const Keyboard = () => {
+  const keyboardRef = useRef<SPEObject | undefined | null>(null);
+  const { width } = useWindowSize();
+
+  const onLoad = (spline: Application) => {
+    const keyboard = spline.findObjectByName("keyboard");
+    keyboardRef.current = keyboard;
+    setZoom(spline);
+    if (keyboardRef.current) {
+    }
   };
 
   const onMouseDown = (e: SplineEvent) => {
@@ -39,51 +48,62 @@ export const Keyboard = () => {
       console.log(e.target.name);
   };
 
-  const moveObject = (pos: number, axis: string) => {
-    keyboardRef.current.position[axis] += pos;
+  const moveObject = (pos: number, axis: keyof SPEObject["position"]) => {
+    if (keyboardRef.current) {
+      keyboardRef.current.position[axis] += pos;
+    }
   };
   const rotateUp = (angle: number) => {
-    if (keyboardRef.current.rotation.x > 0.5) {
-      return;
+    if (keyboardRef.current) {
+      if (keyboardRef.current.rotation.x > 0.3) {
+        return;
+      }
+      keyboardRef.current.rotation.x += angle;
     }
-    keyboardRef.current.rotation.x += angle;
   };
   const rotateDown = (angle: number) => {
-    if (keyboardRef.current.rotation.x < -0.2) {
-      return;
+    if (keyboardRef.current) {
+      if (keyboardRef.current.rotation.x < -0.2) {
+        return;
+      }
+      keyboardRef.current.rotation.x += angle;
     }
-    keyboardRef.current.rotation.x += angle;
   };
   const resetPos = () => {
-    keyboardRef.current.position.x = 900;
-    keyboardRef.current.position.y = -277;
-    keyboardRef.current.position.z = -100;
-    keyboardRef.current.rotation.x = 0;
-    keyboardRef.current.rotation.y = 0;
-    keyboardRef.current.rotation.z = 0;
+    if (keyboardRef.current) {
+      keyboardRef.current.position.x = 0;
+      keyboardRef.current.position.y = 0;
+      keyboardRef.current.position.z = 0;
+      keyboardRef.current.rotation.x = 0;
+      keyboardRef.current.rotation.y = 0;
+      keyboardRef.current.rotation.z = 0;
+    }
   };
 
   return (
     <KeyboardContainer>
-      {width < 843 && (
-        <div>
-          <button onClick={() => moveObject(-25, "y")}>v</button>
-          <button onClick={() => moveObject(50, "x")}>{"<"}</button>
-          <button onClick={() => rotateDown(-Math.PI / 45)}>+</button>
-          <button onClick={() => resetPos()}>Reset</button>
-          <button onClick={() => rotateUp(Math.PI / 45)}>-</button>
-          <button onClick={() => moveObject(-50, "x")}>{">"}</button>
-          <button onClick={() => moveObject(25, "y")}>^</button>
-        </div>
+      {width < 1000 && (
+        <ButtonContainer>
+          {/* <button onClick={() => moveObject(-25, "y")}>v</button> */}
+          <StyledButton onClick={() => moveObject(50, "x")}>
+            <BsArrowLeft />
+          </StyledButton>
+          {/* <button onClick={() => rotateDown(-Math.PI / 45)}>+</button> */}
+          <StyledButton onClick={() => resetPos()}>
+            <BsApp />
+          </StyledButton>
+          {/* <button onClick={() => rotateUp(Math.PI / 45)}>-</button> */}
+          <StyledButton onClick={() => moveObject(-50, "x")}>
+            <BsArrowRight />
+          </StyledButton>
+          {/* <button onClick={() => moveObject(25, "y")}>^</button> */}
+        </ButtonContainer>
       )}
-
-      <Suspense fallback={<h1>Loading...</h1>}>
-        <Spline
-          scene="https://prod.spline.design/dq07Wyjzo17JOA7J/scene.splinecode"
-          onMouseDown={onMouseDown}
-          onLoad={onLoad}
-        />
-      </Suspense>
+      <Spline
+        scene="https://prod.spline.design/CyR9KWvP2elMAdin/scene.splinecode"
+        onMouseDown={onMouseDown}
+        onLoad={onLoad}
+      />
     </KeyboardContainer>
   );
 };

@@ -7,10 +7,28 @@ export const KeyboardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   ${({ theme }) => theme.sizes.mediaQueries.tablet} {
     height: 40%;
   }
   canvas {
     margin-bottom: 20px;
   }
+`;
+
+export const ButtonContainer = styled.div`
+  position: absolute;
+  transform: translate(-50%, -100%);
+  top: 0;
+  left: 50%;
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+`;
+
+export const StyledButton = styled.button`
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 10px 0;
 `;
