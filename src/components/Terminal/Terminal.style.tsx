@@ -27,19 +27,20 @@ export const TerminalTopbar = styled.div`
 `;
 export const TerminalCloseButton = styled.button`
   width: 18px;
-  height: 100%;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid #f9faff;
   background: #bdc0bf;
   font-size: 16px;
+  cursor: pointer;
 `;
 export const TerminalBody = styled.div`
   background: black;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 20px 20px 100px;
   overflow-y: scroll;
   p {
     margin-bottom: 8px;
@@ -81,4 +82,8 @@ const dots = keyframes`
 export const InitText = styled.p``;
 export const AnimatedDot = styled.span`
   animation: ${dots} 1s linear infinite;
+`;
+export const TerminalInput = styled.p`
+  &:after {
+  }
 `;

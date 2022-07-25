@@ -9,12 +9,12 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     font-style: normal;
     font-weight: 400;
     font-display: swap;
+    font-smooth: auto;
   }
   * {
     box-sizing: border-box;
     font-family: Clacon;
     margin: 0;
-    font-smooth: auto;
   }
   body {
     background: black;
