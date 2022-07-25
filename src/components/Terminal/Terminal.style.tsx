@@ -39,7 +39,7 @@ export const TerminalBody = styled.div`
   padding: 20px;
   overflow-y: scroll;
   p {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     font-size: 18px;
   }
 `;
