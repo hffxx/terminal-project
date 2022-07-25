@@ -10,7 +10,7 @@ import {
   TerminalInput,
 } from "./Terminal.style";
 import { VscChromeClose } from "react-icons/vsc";
-import { scrollToBottom } from "../services/scrollToBottom";
+import { scrollToBottom } from "../../services/scrollToBottom";
 
 const mockData = ["Terminal Init value"];
 
