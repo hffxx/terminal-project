@@ -8,9 +8,6 @@ export const KeyboardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  ${({ theme }) => theme.sizes.mediaQueries.tablet} {
-    height: 40%;
-  }
   canvas {
     margin-bottom: 20px;
   }
@@ -19,7 +16,7 @@ export const KeyboardContainer = styled.div`
 export const ButtonContainer = styled.div`
   position: absolute;
   transform: translate(-50%, -100%);
-  top: 0;
+  top: 97%;
   left: 50%;
   display: flex;
   justify-content: space-between;

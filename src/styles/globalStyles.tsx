@@ -50,8 +50,5 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     height: 50%;
     margin-top: 20px;
     padding: 20px;
-    ${({ theme }) => theme.sizes.mediaQueries.tablet} {
-      height: 60%;
-    }
   }
 `;
