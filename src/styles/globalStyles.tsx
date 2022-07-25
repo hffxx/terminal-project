@@ -24,6 +24,6 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     flex-direction: column;
     max-width: ${(props) => props.theme.sizes.contentWidth};
     margin: 0 auto;
-    padding: 0 20px;
+    overflow: hidden;
   }
 `;
