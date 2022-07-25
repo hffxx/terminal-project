@@ -12,9 +12,10 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
   * {
     box-sizing: border-box;
     font-family: Clacon;
+    margin: 0;
+    font-smooth: auto;
   }
   body {
-    margin: 0;
     background: black;
     color: green;
     overflow: hidden;

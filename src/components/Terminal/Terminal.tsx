@@ -17,7 +17,47 @@ export const Terminal = () => {
             <VscChromeClose />
           </TerminalCloseButton>
         </TerminalTopbar>
-        <TerminalBody></TerminalBody>
+        <TerminalBody>
+          <p>
+            {">: Hello there! My name is Maciej and i'm frontend developer."}
+          </p>
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+          <p>
+            {
+              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
+            }
+          </p>
+        </TerminalBody>
       </TerminalBackground>
     </TerminalWrapper>
   );

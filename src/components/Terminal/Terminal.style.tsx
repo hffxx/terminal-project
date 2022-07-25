@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const TerminalWrapper = styled.div`
   max-width: 1240px;
   width: 100%;
-  flex-grow: 1;
+  height: 50%;
   padding: 20px 20px 0;
 `;
 export const TerminalBackground = styled.div`
@@ -13,7 +13,6 @@ export const TerminalBackground = styled.div`
   background: darkgray;
   display: flex;
   flex-direction: column;
-  color: white;
 `;
 export const TerminalTopbar = styled.div`
   background: #000180;
@@ -21,6 +20,7 @@ export const TerminalTopbar = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 4px 10px;
+  color: white;
 `;
 export const TerminalCloseButton = styled.button`
   width: 18px;
@@ -36,4 +36,10 @@ export const TerminalBody = styled.div`
   background: black;
   width: 100%;
   height: 100%;
+  padding: 20px;
+  overflow-y: scroll;
+  p {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
 `;
