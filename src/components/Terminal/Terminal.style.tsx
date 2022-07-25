@@ -24,6 +24,7 @@ export const TerminalTopbar = styled.div`
   justify-content: space-between;
   padding: 4px 10px;
   color: white;
+  margin-bottom: 1px;
 `;
 export const TerminalCloseButton = styled.button`
   width: 18px;
