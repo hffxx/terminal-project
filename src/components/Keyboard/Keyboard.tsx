@@ -12,7 +12,7 @@ import { BsArrowLeft, BsArrowRight, BsApp } from "react-icons/bs";
 const setZoom = (spline: Application, width = window.innerWidth) => {
   if (spline) {
     if (width < 770) {
-      spline.setZoom(0.65);
+      spline.setZoom(0.55);
       return;
     }
     if (width < 1367) {

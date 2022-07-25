@@ -45,11 +45,11 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     text-indent: 0;
   }
   .test {
-    border: 1px solid red;
     max-width: 1400px;
     width: 100%;
     height: 50%;
     margin-top: 20px;
+    padding: 20px;
     ${({ theme }) => theme.sizes.mediaQueries.tablet} {
       height: 60%;
     }
