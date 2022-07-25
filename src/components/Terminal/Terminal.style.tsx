@@ -40,20 +40,18 @@ export const TerminalBody = styled.div`
   background: black;
   width: 100%;
   height: 100%;
-  padding: 20px 20px 100px;
+  padding: 20px;
   overflow-y: scroll;
   p {
-    margin-bottom: 8px;
+    margin-top: 8px;
     font-size: 18px;
     line-height: 120%;
     &:before {
       content: ">: ";
     }
   }
-  ${({ theme }) => theme.sizes.mediaQueries.desktopL} {
-    p {
-      margin-bottom: 15px;
-    }
+  .input {
+    display: flex;
   }
 `;
 const dots = keyframes`
@@ -79,11 +77,26 @@ const dots = keyframes`
     .25em 0 0 green,
     .5em 0 0 green;}}
 `;
+
 export const InitText = styled.p``;
+
 export const AnimatedDot = styled.span`
   animation: ${dots} 1s linear infinite;
 `;
-export const TerminalInput = styled.p`
-  &:after {
-  }
+export const TerminalInput = styled.p``;
+
+const cursor = keyframes`
+to {
+  visibility: hidden;
+}
+
+`;
+
+export const Cursor = styled.div`
+  width: 1px;
+  height: 18px;
+  background: green;
+  margin-left: 1px;
+  margin-top: 8px;
+  animation: ${cursor} 1s steps(5, start) infinite;
 `;

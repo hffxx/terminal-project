@@ -8,6 +8,7 @@ import {
   InitText,
   AnimatedDot,
   TerminalInput,
+  Cursor,
 } from "./Terminal.style";
 import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
@@ -19,7 +20,15 @@ export const Terminal = () => {
   const [init2, setInit2] = useState(false);
   const [ready, setReady] = useState(false);
   const [data, setData] = useState(mockData);
+  const [inputValue, setInputvalue] = useState<string>("");
   const terminalRef = useRef<HTMLDivElement | null>(null);
+  const test = () => {
+    setInputvalue((prev) => prev.concat("b"));
+  };
+  const enter = () => {
+    setData((prev) => [...prev, inputValue]);
+    setInputvalue("");
+  };
   useEffect(() => {
     setTimeout(() => {
       setInit(true);
@@ -46,6 +55,8 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody ref={terminalRef} id="terminal-body">
+          <TerminalCloseButton onClick={test}>x</TerminalCloseButton>
+          <TerminalCloseButton onClick={enter}>e</TerminalCloseButton>
           {!init ? (
             <InitText>
               Initialization<AnimatedDot>.</AnimatedDot>
@@ -61,12 +72,16 @@ export const Terminal = () => {
             ) : (
               <InitText>Packages installation successful!</InitText>
             ))}
-          {init &&
-            init2 &&
+          {ready &&
             data.map((word, i) => {
               return <p key={i}>{word}</p>;
             })}
-          {ready && <TerminalInput></TerminalInput>}
+          {ready && (
+            <div className="input">
+              <TerminalInput>{inputValue}</TerminalInput>
+              <Cursor />
+            </div>
+          )}
         </TerminalBody>
       </TerminalBackground>
     </TerminalWrapper>
