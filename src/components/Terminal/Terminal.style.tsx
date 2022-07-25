@@ -42,11 +42,16 @@ export const TerminalBody = styled.div`
   padding: 20px;
   overflow-y: scroll;
   p {
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-size: 18px;
     line-height: 120%;
     &:before {
       content: ">: ";
+    }
+  }
+  ${({ theme }) => theme.sizes.mediaQueries.desktopL} {
+    p {
+      margin-bottom: 15px;
     }
   }
 `;
