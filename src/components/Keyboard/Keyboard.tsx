@@ -1,12 +1,14 @@
-import { lazy, Suspense, useEffect, useState, useRef } from "react";
+import { lazy, Suspense, useState, useRef } from "react";
 import { SplineEvent } from "@splinetool/react-spline";
 import { KeyboardContainer } from "./Keyboard.style";
 import { Application } from "@splinetool/runtime";
+import { useWindowSize } from "usehooks-ts";
 
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
 export const Keyboard = () => {
   const keyboardRef = useRef<any>(null);
+  const { width } = useWindowSize();
   const [spline, setSpline] = useState<any>();
   const onLoad = (spline: Application) => {
     const keyboard = spline.findObjectByName("keyboard");
@@ -14,7 +16,7 @@ export const Keyboard = () => {
     const width = window.innerWidth;
     setSpline(spline);
     if (width < 770) {
-      spline.setZoom(0.9);
+      spline.setZoom(1);
       return;
     }
     if (width < 1367) {
@@ -37,8 +39,8 @@ export const Keyboard = () => {
       console.log(e.target.name);
   };
 
-  const moveObject = (pos: number) => {
-    keyboardRef.current.position.x += pos;
+  const moveObject = (pos: number, axis: string) => {
+    keyboardRef.current.position[axis] += pos;
   };
   const rotateUp = (angle: number) => {
     if (keyboardRef.current.rotation.x > 0.5) {
@@ -63,13 +65,18 @@ export const Keyboard = () => {
 
   return (
     <KeyboardContainer>
-      <div>
-        <button onClick={() => moveObject(50)}>Move Left</button>
-        <button onClick={() => rotateDown(-Math.PI / 45)}>Rotate Down</button>
-        <button onClick={() => resetPos()}>Reset Pos</button>
-        <button onClick={() => rotateUp(Math.PI / 45)}>Rotate Up</button>
-        <button onClick={() => moveObject(-50)}>Move Right</button>
-      </div>
+      {width < 843 && (
+        <div>
+          <button onClick={() => moveObject(-25, "y")}>v</button>
+          <button onClick={() => moveObject(50, "x")}>{"<"}</button>
+          <button onClick={() => rotateDown(-Math.PI / 45)}>+</button>
+          <button onClick={() => resetPos()}>Reset</button>
+          <button onClick={() => rotateUp(Math.PI / 45)}>-</button>
+          <button onClick={() => moveObject(-50, "x")}>{">"}</button>
+          <button onClick={() => moveObject(25, "y")}>^</button>
+        </div>
+      )}
+
       <Suspense fallback={<h1>Loading...</h1>}>
         <Spline
           scene="https://prod.spline.design/dq07Wyjzo17JOA7J/scene.splinecode"
