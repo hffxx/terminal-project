@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
 export const TerminalWrapper = styled.div`
-  max-width: 1000px;
+  max-width: 950px;
   width: 100%;
   height: 50%;
   padding: 20px 20px 0;
