@@ -15,8 +15,8 @@ export const KeyboardContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   position: absolute;
-  transform: translate(-50%, -100%);
-  top: 97%;
+  transform: translateX(-50%);
+  bottom: 0%;
   left: 50%;
   display: flex;
   justify-content: space-between;
