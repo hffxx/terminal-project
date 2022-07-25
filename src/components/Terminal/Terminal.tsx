@@ -13,29 +13,33 @@ import {
 import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
 
-const mockData = ["Terminal Init value"];
-
 export const Terminal = () => {
-  const [init, setInit] = useState(false);
-  const [init2, setInit2] = useState(false);
-  const [ready, setReady] = useState(false);
-  const [data, setData] = useState(mockData);
-  const [inputValue, setInputvalue] = useState<string>("");
+  const [data, setData] = useState<string[]>([]);
+  const [inputValue, setInputvalue] = useState<string>("cls");
   const terminalRef = useRef<HTMLDivElement | null>(null);
+  const [loading, setLoading] = useState<any>({ init: false, packages: false });
+  const [visible, isVisible] = useState(true);
+
   const test = () => {
     setInputvalue((prev) => prev.concat("b"));
   };
   const enter = () => {
-    setData((prev) => [...prev, inputValue]);
+    if (inputValue === "cls") {
+      isVisible(false);
+      setData([]);
+      setInputvalue("");
+      return;
+    }
+    setData((prev: string[]) => [...prev, inputValue]);
     setInputvalue("");
   };
+
   useEffect(() => {
     setTimeout(() => {
-      setInit(true);
+      setLoading((prevState: any) => ({ ...prevState, init: true }));
     }, 5000);
     setTimeout(() => {
-      setInit2(true);
-      setReady(true);
+      setLoading((prevState: any) => ({ ...prevState, packages: true }));
     }, 15000);
   }, []);
 
@@ -55,28 +59,33 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody ref={terminalRef} id="terminal-body">
-          <TerminalCloseButton onClick={test}>x</TerminalCloseButton>
+          <TerminalCloseButton onClick={test}>b</TerminalCloseButton>
           <TerminalCloseButton onClick={enter}>e</TerminalCloseButton>
-          {!init ? (
-            <InitText>
-              Initialization<AnimatedDot>.</AnimatedDot>
-            </InitText>
-          ) : (
-            <InitText>Initialization done in 5.02s</InitText>
+          {visible && (
+            <>
+              {loading.init ? (
+                <InitText>Initialization done in 5.02s</InitText>
+              ) : (
+                <InitText>
+                  Initialization<AnimatedDot>.</AnimatedDot>
+                </InitText>
+              )}
+              {loading.init &&
+                (loading.packages ? (
+                  <InitText>Packages installation successful!</InitText>
+                ) : (
+                  <InitText>
+                    Installing packages<AnimatedDot>.</AnimatedDot>
+                  </InitText>
+                ))}
+            </>
           )}
-          {init &&
-            (!init2 ? (
-              <InitText>
-                Installing packages<AnimatedDot>.</AnimatedDot>
-              </InitText>
-            ) : (
-              <InitText>Packages installation successful!</InitText>
-            ))}
-          {ready &&
+          {loading.init &&
+            loading.packages &&
             data.map((word, i) => {
               return <p key={i}>{word}</p>;
             })}
-          {ready && (
+          {loading.init && loading.packages && (
             <div className="input">
               <TerminalInput>{inputValue}</TerminalInput>
               <Cursor />
