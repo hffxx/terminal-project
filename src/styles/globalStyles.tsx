@@ -9,6 +9,8 @@ export default styled.createGlobalStyle`
   }
   body {
     font-family: Clacon;
+    margin: 0;
+    overflow: hidden;
   }
   code {
     font-family: source-code-pro;
