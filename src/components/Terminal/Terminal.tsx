@@ -1,13 +1,30 @@
+import { useEffect, useState } from "react";
 import {
   TerminalBackground,
   TerminalWrapper,
   TerminalTopbar,
   TerminalCloseButton,
   TerminalBody,
+  InitText,
+  AnimatedDot,
 } from "./Terminal.style";
 import { VscChromeClose } from "react-icons/vsc";
 
+const mockData = ["Hello there :)", "How are you?"];
+
 export const Terminal = () => {
+  const [init, setInit] = useState(false);
+  const [init2, setInit2] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setInit(true);
+    }, 5000);
+    setTimeout(() => {
+      setInit2(true);
+    }, 15000);
+  }, []);
+
   return (
     <TerminalWrapper>
       <TerminalBackground>
@@ -18,45 +35,21 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody>
-          <p>
-            {">: Hello there! My name is Maciej and i'm frontend developer."}
-          </p>
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
-
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
-          <p>
-            {
-              ">: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni molestias quisquam voluptate accusantium, aliquam illum voluptatem rem reprehenderit culpa ratione obcaecati nostrum repellat eaque asperiores vitae excepturi impedit aut nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatibus sit architecto, consequuntur cupiditate quod officia, quaerat expedita libero delectus eligendi dolorum quibusdam, inventore repellendus eaque amet dolores obcaecati in enim?"
-            }
-          </p>
+          {!init ? (
+            <InitText>
+              Initialization<AnimatedDot>.</AnimatedDot>
+            </InitText>
+          ) : (
+            <InitText>Initialization done in 5.02s</InitText>
+          )}
+          {init &&
+            (!init2 ? (
+              <InitText>
+                Installing packages<AnimatedDot>.</AnimatedDot>
+              </InitText>
+            ) : (
+              <InitText>Packages installation successful!</InitText>
+            ))}
         </TerminalBody>
       </TerminalBackground>
     </TerminalWrapper>

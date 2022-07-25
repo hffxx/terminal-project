@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const TerminalWrapper = styled.div`
   max-width: 1240px;
@@ -41,5 +41,35 @@ export const TerminalBody = styled.div`
   p {
     margin-bottom: 20px;
     font-size: 18px;
+    &:before {
+      content: ">: ";
+    }
   }
+`;
+const dots = keyframes`
+0% {
+  color: rgba(0,0,0,0)
+}
+20% {
+  color: green;
+  text-shadow:
+    .25em 0 0 rgba(0,0,0,0),
+    .5em 0 0 rgba(0,0,0,0);}
+40% {
+  color: green;
+  text-shadow:
+    .25em 0 0 rgba(0,0,0,0),
+    .5em 0 0 rgba(0,0,0,0);}
+60% {
+  text-shadow:
+    .25em 0 0 green,
+    .5em 0 0 rgba(0,0,0,0);}
+80%, 100% {
+  text-shadow:
+    .25em 0 0 green,
+    .5em 0 0 green;}}
+`;
+export const InitText = styled.p``;
+export const AnimatedDot = styled.span`
+  animation: ${dots} 1s linear infinite;
 `;

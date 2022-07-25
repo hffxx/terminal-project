@@ -8,6 +8,7 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     src: url(${ClaconTTF}) format("truetype");
     font-style: normal;
     font-weight: 400;
+    font-display: swap;
   }
   * {
     box-sizing: border-box;
@@ -19,9 +20,29 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     background: black;
     color: green;
     overflow: hidden;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #000000;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    background-color: #000000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #bdc0bf;
   }
   code {
     font-family: source-code-pro;
+  }
+  a {
+    color: #00b300;
   }
   .app {
     height: 100vh;
