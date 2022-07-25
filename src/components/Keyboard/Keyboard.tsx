@@ -3,6 +3,7 @@ import { SplineEvent } from "@splinetool/react-spline";
 import { KeyboardContainer } from "./Keyboard.style";
 import { Application } from "@splinetool/runtime";
 
+
 const Spline = lazy(() => import("@splinetool/react-spline"));
 
 export const Keyboard = () => {
