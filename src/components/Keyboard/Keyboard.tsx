@@ -7,7 +7,7 @@ import { Application } from "@splinetool/runtime";
 const setZoom = (spline: Application) => {
   const width = window.innerWidth;
   if (width < 1601) {
-    spline.setZoom(0.6);
+    spline.setZoom(0.7);
     return;
   }
   if (width < 1921) {
