@@ -12,20 +12,21 @@ import {
 } from "./Terminal.style";
 import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
+import { getRandNumb } from "../../services/getRandNum";
 
 export const Terminal = () => {
   const [data, setData] = useState<string[]>([]);
   const [inputValue, setInputvalue] = useState<string>("cls");
   const terminalRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState<any>({ init: false, packages: false });
-  const [visible, isVisible] = useState(true);
+  const [clean, setClean] = useState(true);
 
   const test = () => {
     setInputvalue((prev) => prev.concat("b"));
   };
   const enter = () => {
     if (inputValue === "cls") {
-      isVisible(false);
+      setClean(false);
       setData([]);
       setInputvalue("");
       return;
@@ -61,10 +62,10 @@ export const Terminal = () => {
         <TerminalBody ref={terminalRef} id="terminal-body">
           <TerminalCloseButton onClick={test}>b</TerminalCloseButton>
           <TerminalCloseButton onClick={enter}>e</TerminalCloseButton>
-          {visible && (
+          {clean && (
             <>
               {loading.init ? (
-                <InitText>Initialization done in 5.02s</InitText>
+                <InitText>{`Initialized done in ${getRandNumb(5)}s`}</InitText>
               ) : (
                 <InitText>
                   Initialization<AnimatedDot>.</AnimatedDot>
