@@ -39,8 +39,9 @@ export const TerminalBody = styled.div`
   padding: 20px;
   overflow-y: scroll;
   p {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 18px;
+    line-height: 120%;
     &:before {
       content: ">: ";
     }
