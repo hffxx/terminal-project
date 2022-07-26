@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
 import Spline, { SplineEvent } from "@splinetool/react-spline";
 import {
   KeyboardContainer,
@@ -8,44 +8,23 @@ import {
 import { Application, SPEObject } from "@splinetool/runtime";
 import { useWindowSize } from "usehooks-ts";
 import { BsArrowLeft, BsArrowRight, BsApp } from "react-icons/bs";
-
-const setZoom = (spline: Application, width = window.innerWidth) => {
-  if (spline) {
-    if (width < 770) {
-      spline.setZoom(0.55);
-      return;
-    }
-    if (width < 1367) {
-      spline.setZoom(0.65);
-      return;
-    }
-    if (width < 1601) {
-      spline.setZoom(0.6);
-      return;
-    }
-    if (width < 1921) {
-      spline.setZoom(0.75);
-      return;
-    }
-    spline.setZoom(0.9);
-  }
-};
+import { useInput } from "../../context/InputContext";
+import { setZoom } from "../../services/setZoom";
 
 export const Keyboard = () => {
   const keyboardRef = useRef<SPEObject | undefined | null>(null);
   const { width } = useWindowSize();
 
+  const { input, setInput, func, setFunc } = useInput();
+
   const onLoad = (spline: Application) => {
     const keyboard = spline.findObjectByName("keyboard");
     keyboardRef.current = keyboard;
     setZoom(spline);
-    if (keyboardRef.current) {
-    }
   };
 
   const onMouseDown = (e: SplineEvent) => {
-    if (!e.target.name.includes("func" || "keyboard"))
-      console.log(e.target.name);
+    if (!e.target.name.includes("func" || "obj")) console.log(e.target.name);
   };
 
   const moveObject = (pos: number, axis: keyof SPEObject["position"]) => {

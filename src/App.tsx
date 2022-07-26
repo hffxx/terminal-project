@@ -1,11 +1,14 @@
 import { Keyboard } from "./components/Keyboard/Keyboard";
 import { Terminal } from "./components/Terminal/Terminal";
+import { InputProvider } from "./context/InputContext";
 
 export const App = () => {
   return (
     <div className="app">
-      <Terminal />
-      <Keyboard />
+      <InputProvider>
+        <Terminal />
+        <Keyboard />
+      </InputProvider>
     </div>
   );
 };

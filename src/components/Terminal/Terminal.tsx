@@ -13,28 +13,26 @@ import {
 import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
 import { getRandNumb } from "../../services/getRandNum";
+import { useInput } from "../../context/InputContext";
 
 const num = getRandNumb(5);
 
 export const Terminal = () => {
   const [data, setData] = useState<string[]>([]);
-  const [inputValue, setInputvalue] = useState<string>("cls");
   const terminalRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState<any>({ init: false, packages: false });
-  const [clean, setClean] = useState(true);
+  const [hideInit, setHideInit] = useState(false);
+  const { input, setInput } = useInput();
 
-  const test = () => {
-    setInputvalue((prev) => prev.concat("b"));
-  };
   const enter = () => {
-    if (inputValue === "cls") {
-      setClean(false);
+    if (input === "cls") {
+      setHideInit(false);
       setData([]);
-      setInputvalue("");
+      setInput("");
       return;
     }
-    setData((prev: string[]) => [...prev, inputValue]);
-    setInputvalue("");
+    setData((prev: string[]) => [...prev, input]);
+    setInput("");
   };
 
   useEffect(() => {
@@ -62,9 +60,8 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody ref={terminalRef} id="terminal-body">
-          <TerminalCloseButton onClick={test}>b</TerminalCloseButton>
           <TerminalCloseButton onClick={enter}>e</TerminalCloseButton>
-          {clean && (
+          {!hideInit && (
             <>
               {loading.init ? (
                 <InitText>{`Initialized done in ${num}s`}</InitText>
@@ -90,7 +87,7 @@ export const Terminal = () => {
             })}
           {loading.init && loading.packages && (
             <div className="input">
-              <TerminalInput>{inputValue}</TerminalInput>
+              <TerminalInput>{input}</TerminalInput>
               <Cursor />
             </div>
           )}
