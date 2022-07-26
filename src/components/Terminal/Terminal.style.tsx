@@ -22,7 +22,7 @@ export const TerminalTopbar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 10px;
+  padding: 4px;
   color: white;
   margin-bottom: 1px;
 `;
