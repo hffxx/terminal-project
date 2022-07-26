@@ -79,23 +79,23 @@ export const Keyboard = () => {
 
   return (
     <KeyboardContainer>
-      {width < 1000 && (
+      {/* {width < 1000 && (
         <ButtonContainer>
-          {/* <button onClick={() => moveObject(-25, "y")}>v</button> */}
+          <button onClick={() => moveObject(-25, "y")}>v</button>
           <StyledButton onClick={() => moveObject(50, "x")}>
             <BsArrowLeft />
           </StyledButton>
-          {/* <button onClick={() => rotateDown(-Math.PI / 45)}>+</button> */}
+          <button onClick={() => rotateDown(-Math.PI / 45)}>+</button>
           <StyledButton onClick={() => resetPos()}>
             <BsApp />
           </StyledButton>
-          {/* <button onClick={() => rotateUp(Math.PI / 45)}>-</button> */}
+          <button onClick={() => rotateUp(Math.PI / 45)}>-</button>
           <StyledButton onClick={() => moveObject(-50, "x")}>
             <BsArrowRight />
           </StyledButton>
-          {/* <button onClick={() => moveObject(25, "y")}>^</button> */}
+          <button onClick={() => moveObject(25, "y")}>^</button>
         </ButtonContainer>
-      )}
+      )} */}
       <Spline
         scene="https://prod.spline.design/CyR9KWvP2elMAdin/scene.splinecode"
         onMouseDown={(e) => onMouseDown(e)}
