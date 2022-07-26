@@ -32,7 +32,7 @@ export const useInput = () => {
 };
 
 export const InputProvider = ({ children }: { children: ReactNode }) => {
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState(``);
   const [inputHistory, setInputHistory] = useState<string[]>([]);
   const [func, setFunc] = useState({
     lctrl: false,

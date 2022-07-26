@@ -25,7 +25,7 @@ export const Keyboard = () => {
       return;
     }
     if (e.target.name === "func space") {
-      setInput((prevInput) => (prevInput += ` `));
+      setInput((prevInput) => (prevInput += " "));
       return;
     }
     if (e.target.name === "func backspace") {
