@@ -14,6 +14,8 @@ import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
 import { getRandNumb } from "../../services/getRandNum";
 
+const num = getRandNumb(5);
+
 export const Terminal = () => {
   const [data, setData] = useState<string[]>([]);
   const [inputValue, setInputvalue] = useState<string>("cls");
@@ -65,7 +67,7 @@ export const Terminal = () => {
           {clean && (
             <>
               {loading.init ? (
-                <InitText>{`Initialized done in ${getRandNumb(5)}s`}</InitText>
+                <InitText>{`Initialized done in ${num}s`}</InitText>
               ) : (
                 <InitText>
                   Initialization<AnimatedDot>.</AnimatedDot>
