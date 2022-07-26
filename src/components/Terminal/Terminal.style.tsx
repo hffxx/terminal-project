@@ -48,7 +48,8 @@ export const TerminalBody = styled.div`
     font-size: 18px;
     line-height: 120%;
     &:before {
-      content: ">: ";
+      content: ">:";
+      margin-right: 10px;
     }
   }
   .input {
