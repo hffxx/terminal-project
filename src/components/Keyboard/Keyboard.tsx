@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react";
+import { useRef, useMemo } from "react";
 import Spline, { SplineEvent } from "@splinetool/react-spline";
 import {
   KeyboardContainer,
@@ -15,16 +15,34 @@ export const Keyboard = () => {
   const keyboardRef = useRef<SPEObject | undefined | null>(null);
   const { width } = useWindowSize();
 
-  const { input, setInput, func, setFunc } = useInput();
+  const { input, setInput, setInputHistory } = useInput();
+
+  const memoizedNnMouseDown = useMemo(() => {}, [input]);
+
+  const onMouseDown = (e: SplineEvent) => {
+    if (!e.target.name.includes("func" || "obj")) {
+      setInput((prevInput) => (prevInput += e.target.name[0]));
+      return;
+    }
+    if (e.target.name === "func space") {
+      setInput((prevInput) => (prevInput += ` `));
+      return;
+    }
+    if (e.target.name === "func backspace") {
+      setInput((prevInput) => prevInput.slice(0, -1));
+      return;
+    }
+    if (e.target.name === "func enter") {
+      setInputHistory((prevHistory) => [...prevHistory, input]);
+      setInput("");
+      return;
+    }
+  };
 
   const onLoad = (spline: Application) => {
     const keyboard = spline.findObjectByName("keyboard");
     keyboardRef.current = keyboard;
     setZoom(spline);
-  };
-
-  const onMouseDown = (e: SplineEvent) => {
-    if (!e.target.name.includes("func" || "obj")) console.log(e.target.name);
   };
 
   const moveObject = (pos: number, axis: keyof SPEObject["position"]) => {
@@ -80,7 +98,7 @@ export const Keyboard = () => {
       )}
       <Spline
         scene="https://prod.spline.design/CyR9KWvP2elMAdin/scene.splinecode"
-        onMouseDown={onMouseDown}
+        onMouseDown={(e) => onMouseDown(e)}
         onLoad={onLoad}
       />
     </KeyboardContainer>

@@ -100,5 +100,5 @@ export const Cursor = styled.div`
   background: green;
   margin-left: 1px;
   margin-top: 8px;
-  animation: ${cursor} 1s steps(5, start) infinite;
+  animation: ${cursor} 1s steps(3, start) infinite;
 `;

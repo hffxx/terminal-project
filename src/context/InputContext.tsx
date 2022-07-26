@@ -1,10 +1,10 @@
 import {
-  ContextType,
   createContext,
   ReactNode,
-  useEffect,
   useState,
   useContext,
+  Dispatch,
+  SetStateAction,
 } from "react";
 
 interface IFunc {
@@ -16,12 +16,16 @@ interface IFunc {
   rshift: boolean;
 }
 
-const InputContext = createContext({
-  input: "",
-  setInput: (input: string) => {},
-  func: {},
-  setFunc: (func: IFunc) => {},
-});
+interface IContextProps {
+  input: string;
+  setInput: Dispatch<SetStateAction<string>>;
+  func: IFunc;
+  setFunc: Dispatch<SetStateAction<IFunc>>;
+  inputHistory: string[];
+  setInputHistory: Dispatch<SetStateAction<string[]>>;
+}
+
+const InputContext = createContext({} as IContextProps);
 
 export const useInput = () => {
   return useContext(InputContext);
@@ -29,6 +33,7 @@ export const useInput = () => {
 
 export const InputProvider = ({ children }: { children: ReactNode }) => {
   const [input, setInput] = useState("");
+  const [inputHistory, setInputHistory] = useState<string[]>([]);
   const [func, setFunc] = useState({
     lctrl: false,
     lalt: false,
@@ -38,7 +43,14 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     rshift: false,
   });
 
-  const value = { input, setInput, func, setFunc };
+  const value: IContextProps = {
+    input,
+    setInput,
+    func,
+    setFunc,
+    inputHistory,
+    setInputHistory,
+  };
 
   return (
     <InputContext.Provider value={value}>{children}</InputContext.Provider>

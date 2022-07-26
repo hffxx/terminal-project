@@ -18,22 +18,11 @@ import { useInput } from "../../context/InputContext";
 const num = getRandNumb(5);
 
 export const Terminal = () => {
-  const [data, setData] = useState<string[]>([]);
   const terminalRef = useRef<HTMLDivElement | null>(null);
   const [loading, setLoading] = useState<any>({ init: false, packages: false });
   const [hideInit, setHideInit] = useState(false);
-  const { input, setInput } = useInput();
 
-  const enter = () => {
-    if (input === "cls") {
-      setHideInit(false);
-      setData([]);
-      setInput("");
-      return;
-    }
-    setData((prev: string[]) => [...prev, input]);
-    setInput("");
-  };
+  const { input, setInput, inputHistory } = useInput();
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,13 +32,11 @@ export const Terminal = () => {
       setLoading((prevState: any) => ({ ...prevState, packages: true }));
     }, 15000);
   }, []);
-
   useEffect(() => {
     if (terminalRef.current) {
       scrollToBottom("terminal-body");
     }
-  }, [data]);
-
+  }, [inputHistory]);
   return (
     <TerminalWrapper>
       <TerminalBackground>
@@ -60,7 +47,6 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody ref={terminalRef} id="terminal-body">
-          <TerminalCloseButton onClick={enter}>e</TerminalCloseButton>
           {!hideInit && (
             <>
               {loading.init ? (
@@ -82,7 +68,7 @@ export const Terminal = () => {
           )}
           {loading.init &&
             loading.packages &&
-            data.map((word, i) => {
+            inputHistory.map((word, i) => {
               return <p key={i}>{word}</p>;
             })}
           {loading.init && loading.packages && (
