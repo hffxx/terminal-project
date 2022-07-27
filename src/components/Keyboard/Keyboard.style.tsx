@@ -21,6 +21,9 @@ export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 90%;
+  padding: 0 20px;
+  background: rgba(189, 189, 189, 0.3);
+  width: 100%;
 `;
 
 export const StyledButton = styled.button`
