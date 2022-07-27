@@ -33,7 +33,7 @@ export const useInput = () => {
 
 export const InputProvider = ({ children }: { children: ReactNode }) => {
   const [input, setInput] = useState(``);
-  const [inputHistory, setInputHistory] = useState<string[]>(["e", "e"]);
+  const [inputHistory, setInputHistory] = useState<string[]>([]);
   const [func, setFunc] = useState({
     lctrl: false,
     lalt: false,
