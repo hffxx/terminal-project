@@ -72,7 +72,7 @@ export const Terminal = () => {
           {loading.init && loading.packages && (
             <TerminalText>
               {input}
-              <div className="cwel"> </div>
+              <div className="cursor">&nbsp;</div>
             </TerminalText>
           )}
         </TerminalBody>

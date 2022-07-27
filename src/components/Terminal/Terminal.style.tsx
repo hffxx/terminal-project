@@ -86,7 +86,7 @@ export const TerminalText = styled.p`
     content: ">:";
     margin-right: 10px;
   }
-  .cwel {
+  .cursor {
     background: green;
     width: 1px;
     height: 18px;
