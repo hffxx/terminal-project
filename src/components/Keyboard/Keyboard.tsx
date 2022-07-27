@@ -11,6 +11,7 @@ import { useInput } from "context/InputContext";
 import { useWindowSize } from "usehooks-ts";
 import { setZoom } from "services/setZoom";
 import { getFuncKey } from "services/getFuncKey";
+import { IFunc } from "context/types";
 
 export const Keyboard = () => {
   const keyboardRef = useRef<SPEObject>();
@@ -18,68 +19,10 @@ export const Keyboard = () => {
 
   const { input, setInput, setInputHistory, setFunc, func } = useInput();
   const { lshift, rshift } = func;
+
   useEffect(() => {
     console.log(func);
   }, [func]);
-
-  const test = (e: SplineEvent) => {
-    const key = e.target.name;
-    if (key === "obj") {
-      return;
-    }
-    if (key === "func space") {
-      setInput((prevInput) => prevInput + " ");
-      return;
-    }
-    if (key === "func backspace") {
-      setInput((prevInput) => prevInput.slice(0, -1));
-      return;
-    }
-    if (key === "func enter") {
-      setInputHistory((prevHistory) => [...prevHistory, input]);
-      setInput("");
-      return;
-    }
-    if (key === "func tab") {
-      setInput((prevInput) => prevInput + " ".repeat(5));
-      return;
-    }
-    if (key === "func lshift") {
-      setFunc((prevState) => ({ ...prevState, lshift: !prevState.lshift }));
-      return;
-    }
-    if (key === "func rshift") {
-      setFunc((prevState) => ({ ...prevState, rshift: !prevState.rshift }));
-      return;
-    }
-    if (key === "func lctrl") {
-      setFunc((prevState) => ({ ...prevState, lctrl: !prevState.lctrl }));
-      return;
-    }
-    if (key === "func rctrl") {
-      setFunc((prevState) => ({ ...prevState, rctrl: !prevState.rctrl }));
-      return;
-    }
-    if (key === "func lalt") {
-      setFunc((prevState) => ({ ...prevState, lalt: !prevState.lalt }));
-      return;
-    }
-    if (key === "func ralt") {
-      setFunc((prevState) => ({ ...prevState, ralt: !prevState.ralt }));
-      return;
-    }
-    if (key === "func fn") {
-      setFunc((prevState) => ({ ...prevState, fn: !prevState.fn }));
-      return;
-    }
-    if (key === "func caps") {
-      setFunc((prevState) => ({ ...prevState, caps: !prevState.caps }));
-      return;
-    }
-    setInput(
-      (prevInput) => prevInput + e.target.name[lshift || rshift ? 1 : 0]
-    );
-  };
 
   const onMouseDown = (e: SplineEvent) => {
     const key = e.target.name;
@@ -88,6 +31,10 @@ export const Keyboard = () => {
     }
     if (key.includes("func")) {
       const func = getFuncKey(key);
+      setFunc((prevState) => ({
+        ...prevState,
+        [func]: !prevState[func as keyof IFunc],
+      }));
       return;
     }
     if (key === "enter") {
