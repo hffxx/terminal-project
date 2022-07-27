@@ -12,23 +12,23 @@ import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
 import { getRandNumb } from "../../services/getRandNum";
 import { useInput } from "../../context/InputContext";
+import { IApp } from "../../context/types";
 
 const num = getRandNumb(5);
 
 export const Terminal = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
-  const [loading, setLoading] = useState<any>({ init: false, packages: false });
-  const [hideInit, setHideInit] = useState(false);
 
-  const { input, setInput, inputHistory } = useInput();
+  const { input, setInput, inputHistory, appSetting, setAppSettings } =
+    useInput();
 
   useEffect(() => {
     setTimeout(() => {
-      setLoading((prevState: any) => ({ ...prevState, init: true }));
+      setAppSettings((prevState: IApp) => ({ ...prevState, init: true }));
     }, 5000);
     setTimeout(() => {
-      setLoading((prevState: any) => ({ ...prevState, packages: true }));
-    }, 15000);
+      setAppSettings((prevState: IApp) => ({ ...prevState, packages: true }));
+    }, 10000);
   }, []);
   useEffect(() => {
     if (terminalRef.current) {
@@ -45,17 +45,17 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody ref={terminalRef} id="terminal-body">
-          {!hideInit && (
+          {!appSetting.hideInit && (
             <>
-              {loading.init ? (
+              {appSetting.init ? (
                 <TerminalText>{`Initialized done in ${num}s`}</TerminalText>
               ) : (
                 <TerminalText>
                   Initialization<AnimatedDot>.</AnimatedDot>
                 </TerminalText>
               )}
-              {loading.init &&
-                (loading.packages ? (
+              {appSetting.init &&
+                (appSetting.packages ? (
                   <TerminalText>Packages installation successful!</TerminalText>
                 ) : (
                   <TerminalText>
@@ -64,12 +64,12 @@ export const Terminal = () => {
                 ))}
             </>
           )}
-          {loading.init &&
-            loading.packages &&
+          {appSetting.init &&
+            appSetting.packages &&
             inputHistory.map((word, i) => {
               return <TerminalText key={i}>{word}</TerminalText>;
             })}
-          {loading.init && loading.packages && (
+          {appSetting.init && appSetting.packages && (
             <TerminalText>
               {input}
               <div className="cursor">&nbsp;</div>
