@@ -67,7 +67,7 @@ export const Terminal = () => {
           {loading.init &&
             loading.packages &&
             inputHistory.map((word, i) => {
-              return <p key={i}>{word}</p>;
+              return <TerminalText key={i}>{word}</TerminalText>;
             })}
           {loading.init && loading.packages && (
             <TerminalText>
