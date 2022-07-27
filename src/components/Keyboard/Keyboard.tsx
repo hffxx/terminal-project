@@ -42,13 +42,13 @@ export const Keyboard = () => {
     console.log(keyboardPos);
   }, [lshift]);
 
-  const getKeyboardPos = () => {
-    return {
+  const fetchKeyboardPos = () => {
+    setKeyboardPos({
       ...keyboardRef.current?.position,
       _x: keyboardRef.current?.rotation.x,
       _y: keyboardRef.current?.rotation.y,
       _z: keyboardRef.current?.rotation.z,
-    };
+    });
   };
 
   const onMouseDown = (e: SplineEvent) => {
@@ -88,7 +88,7 @@ export const Keyboard = () => {
     const keyboard = spline.findObjectByName("keyboard");
     keyboardRef.current = keyboard;
     setZoom(spline);
-    setKeyboardPos(getKeyboardPos());
+    fetchKeyboardPos();
   };
 
   return (
@@ -98,7 +98,7 @@ export const Keyboard = () => {
           <StyledButton
             onClick={() => {
               moveKeyboard(keyboardRef, 50, "x");
-              setKeyboardPos(getKeyboardPos());
+              fetchKeyboardPos();
             }}
           >
             <BsArrowLeft />
@@ -106,7 +106,7 @@ export const Keyboard = () => {
           <StyledButton
             onClick={() => {
               moveKeyboard(keyboardRef, 25, "y");
-              setKeyboardPos(getKeyboardPos());
+              fetchKeyboardPos();
             }}
           >
             <BsArrowUp />
@@ -114,7 +114,7 @@ export const Keyboard = () => {
           <StyledButton
             onClick={() => {
               moveKeyboard(keyboardRef, -Math.PI / 45);
-              setKeyboardPos(getKeyboardPos());
+              fetchKeyboardPos();
             }}
           >
             <BsArrowClockwise />
@@ -122,7 +122,7 @@ export const Keyboard = () => {
           <StyledButton
             onClick={() => {
               resetPos(keyboardRef);
-              setKeyboardPos(getKeyboardPos());
+              fetchKeyboardPos();
             }}
           >
             <BsApp />
