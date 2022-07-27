@@ -5,10 +5,8 @@ import {
   TerminalTopbar,
   TerminalCloseButton,
   TerminalBody,
-  InitText,
+  TerminalText,
   AnimatedDot,
-  TerminalInput,
-  Cursor,
 } from "./Terminal.style";
 import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "../../services/scrollToBottom";
@@ -19,7 +17,7 @@ const num = getRandNumb(5);
 
 export const Terminal = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
-  const [loading, setLoading] = useState<any>({ init: false, packages: false });
+  const [loading, setLoading] = useState<any>({ init: true, packages: true });
   const [hideInit, setHideInit] = useState(false);
 
   const { input, setInput, inputHistory } = useInput();
@@ -50,19 +48,19 @@ export const Terminal = () => {
           {!hideInit && (
             <>
               {loading.init ? (
-                <InitText>{`Initialized done in ${num}s`}</InitText>
+                <TerminalText>{`Initialized done in ${num}s`}</TerminalText>
               ) : (
-                <InitText>
+                <TerminalText>
                   Initialization<AnimatedDot>.</AnimatedDot>
-                </InitText>
+                </TerminalText>
               )}
               {loading.init &&
                 (loading.packages ? (
-                  <InitText>Packages installation successful!</InitText>
+                  <TerminalText>Packages installation successful!</TerminalText>
                 ) : (
-                  <InitText>
+                  <TerminalText>
                     Installing packages<AnimatedDot>.</AnimatedDot>
-                  </InitText>
+                  </TerminalText>
                 ))}
             </>
           )}
@@ -72,10 +70,10 @@ export const Terminal = () => {
               return <p key={i}>{word}</p>;
             })}
           {loading.init && loading.packages && (
-            <div className="input">
-              <TerminalInput>{input}</TerminalInput>
-              <Cursor />
-            </div>
+            <TerminalText>
+              {input}
+              <div className="cwel"> </div>
+            </TerminalText>
           )}
         </TerminalBody>
       </TerminalBackground>

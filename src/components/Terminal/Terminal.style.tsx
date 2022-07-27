@@ -6,7 +6,7 @@ export const TerminalWrapper = styled.div`
   height: 50%;
   padding: 20px 20px 0;
   ${({ theme }) => theme.sizes.mediaQueries.desktopL} {
-    max-width: 1240px;
+    max-width: 1250px;
   } ;
 `;
 export const TerminalBackground = styled.div`
@@ -43,19 +43,9 @@ export const TerminalBody = styled.div`
   height: 100%;
   padding: 20px;
   overflow-y: scroll;
-  p {
-    margin-top: 8px;
-    font-size: 18px;
-    line-height: 120%;
-    &:before {
-      content: ">:";
-      margin-right: 10px;
-    }
-  }
-  .input {
-    display: flex;
-  }
+  overflow-x: hidden;
 `;
+
 const dots = keyframes`
 0% {
   color: rgba(0,0,0,0)
@@ -80,25 +70,33 @@ const dots = keyframes`
     .5em 0 0 green;}}
 `;
 
-export const InitText = styled.p``;
-
-export const AnimatedDot = styled.span`
-  animation: ${dots} 1s linear infinite;
-`;
-export const TerminalInput = styled.p``;
-
-const cursor = keyframes`
+const blink = keyframes`
 to {
   visibility: hidden;
 }
-
 `;
 
-export const Cursor = styled.div`
-  width: 1px;
-  height: 18px;
-  background: green;
-  margin-left: 1px;
+export const TerminalText = styled.p`
   margin-top: 8px;
-  animation: ${cursor} 1s steps(3, start) infinite;
+  font-size: 18px;
+  line-height: 120%;
+  overflow-wrap: break-word;
+  position: relative;
+  &:before {
+    content: ">:";
+    margin-right: 10px;
+  }
+  .cwel {
+    background: green;
+    width: 1px;
+    height: 18px;
+    margin-left: 2px;
+    display: inline-block;
+    opacity: 1;
+    animation: ${blink} 1s steps(3, start) infinite;
+  }
+`;
+
+export const AnimatedDot = styled.span`
+  animation: ${dots} 1s linear infinite;
 `;

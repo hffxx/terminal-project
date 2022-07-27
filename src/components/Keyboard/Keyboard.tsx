@@ -79,7 +79,7 @@ export const Keyboard = () => {
 
   return (
     <KeyboardContainer>
-      {/* {width < 1000 && (
+      {width < 1000 && (
         <ButtonContainer>
           <button onClick={() => moveObject(-25, "y")}>v</button>
           <StyledButton onClick={() => moveObject(50, "x")}>
@@ -95,7 +95,7 @@ export const Keyboard = () => {
           </StyledButton>
           <button onClick={() => moveObject(25, "y")}>^</button>
         </ButtonContainer>
-      )} */}
+      )}
       <Spline
         scene="https://prod.spline.design/CyR9KWvP2elMAdin/scene.splinecode"
         onMouseDown={(e) => onMouseDown(e)}
