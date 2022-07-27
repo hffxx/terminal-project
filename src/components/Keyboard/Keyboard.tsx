@@ -50,9 +50,7 @@ export const Keyboard = () => {
       setInput((prevInput) => prevInput + " ".repeat(5));
       return;
     }
-    setInput(
-      (prevInput) => prevInput + e.target.name[lshift || rshift ? 1 : 0]
-    );
+    setInput((prevInput) => prevInput + key[lshift || rshift ? 1 : 0]);
   };
 
   const onLoad = (spline: Application) => {
