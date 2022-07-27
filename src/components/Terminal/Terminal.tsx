@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   TerminalBackground,
   TerminalWrapper,
@@ -8,11 +8,13 @@ import {
   TerminalText,
   AnimatedDot,
 } from "./Terminal.style";
+import { useInput } from "context/InputContext";
+import { IApp } from "context/types";
+
 import { VscChromeClose } from "react-icons/vsc";
-import { scrollToBottom } from "../../services/scrollToBottom";
-import { getRandNumb } from "../../services/getRandNum";
-import { useInput } from "../../context/InputContext";
-import { IApp } from "../../context/types";
+import { scrollToBottom } from "services/scrollToBottom";
+
+import { getRandNumb } from "services/getRandNum";
 
 const num = getRandNumb(5);
 

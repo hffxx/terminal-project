@@ -6,10 +6,10 @@ import {
   StyledButton,
 } from "./Keyboard.style";
 import { Application, SPEObject } from "@splinetool/runtime";
-import { useWindowSize } from "usehooks-ts";
 import { BsArrowLeft, BsArrowRight, BsApp } from "react-icons/bs";
-import { useInput } from "../../context/InputContext";
-import { setZoom } from "../../services/setZoom";
+import { useInput } from "context/InputContext";
+import { useWindowSize } from "usehooks-ts";
+import { setZoom } from "services/setZoom";
 
 export const Keyboard = () => {
   const keyboardRef = useRef<SPEObject | undefined | null>(null);
