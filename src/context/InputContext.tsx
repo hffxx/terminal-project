@@ -1,29 +1,5 @@
-import {
-  createContext,
-  ReactNode,
-  useState,
-  useContext,
-  Dispatch,
-  SetStateAction,
-} from "react";
-
-interface IFunc {
-  lctrl: boolean;
-  lalt: boolean;
-  lshift: boolean;
-  rctrl: boolean;
-  ralt: boolean;
-  rshift: boolean;
-}
-
-interface IContextProps {
-  input: string;
-  setInput: Dispatch<SetStateAction<string>>;
-  func: IFunc;
-  setFunc: Dispatch<SetStateAction<IFunc>>;
-  inputHistory: string[];
-  setInputHistory: Dispatch<SetStateAction<string[]>>;
-}
+import { createContext, ReactNode, useState, useContext } from "react";
+import { IContextProps } from "./types";
 
 const InputContext = createContext({} as IContextProps);
 
@@ -42,6 +18,11 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     ralt: false,
     rshift: false,
   });
+  const [appSetting, setAppSettings] = useState({
+    init: false,
+    packages: false,
+    hideInit: false,
+  });
 
   const value: IContextProps = {
     input,
@@ -50,6 +31,8 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     setFunc,
     inputHistory,
     setInputHistory,
+    appSetting,
+    setAppSettings,
   };
 
   return (

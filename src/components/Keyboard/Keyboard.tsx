@@ -21,11 +21,11 @@ export const Keyboard = () => {
 
   const onMouseDown = (e: SplineEvent) => {
     if (!e.target.name.includes("func" || "obj")) {
-      setInput((prevInput) => (prevInput += e.target.name[0]));
+      setInput((prevInput) => prevInput + e.target.name[0]);
       return;
     }
     if (e.target.name === "func space") {
-      setInput((prevInput) => (prevInput += "\xA0"));
+      setInput((prevInput) => prevInput + "\xA0");
       return;
     }
     if (e.target.name === "func backspace") {
@@ -38,7 +38,7 @@ export const Keyboard = () => {
       return;
     }
     if (e.target.name === "func tab") {
-      setInput((prevInput) => (prevInput += "\xA0".repeat(5)));
+      setInput((prevInput) => prevInput + "\xA0".repeat(5));
       return;
     }
   };
