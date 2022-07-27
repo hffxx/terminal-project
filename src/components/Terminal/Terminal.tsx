@@ -12,9 +12,9 @@ import { useInput } from "context/InputContext";
 import { IApp } from "context/types";
 
 import { VscChromeClose } from "react-icons/vsc";
-import { scrollToBottom } from "services/scrollToBottom";
+import { scrollToBottom } from "helpers/scrollToBottom";
 
-import { getRandNumb } from "services/getRandNum";
+import { getRandNumb } from "helpers/getRandNum";
 
 const num = getRandNumb(5);
 

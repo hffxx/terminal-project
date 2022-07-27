@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState, useContext } from "react";
-import { IContextProps } from "./types";
+import { IContextProps, IKeyboardPos } from "./types";
 
 const InputContext = createContext({} as IContextProps);
 
@@ -10,6 +10,7 @@ export const useInput = () => {
 export const InputProvider = ({ children }: { children: ReactNode }) => {
   const [input, setInput] = useState(``);
   const [inputHistory, setInputHistory] = useState<string[]>([]);
+  const [keyboardPos, setKeyboardPos] = useState({} as IKeyboardPos);
   const [func, setFunc] = useState({
     lctrl: false,
     lalt: false,
@@ -35,6 +36,8 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     setInputHistory,
     appSetting,
     setAppSettings,
+    keyboardPos,
+    setKeyboardPos,
   };
 
   return (

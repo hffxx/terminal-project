@@ -18,7 +18,7 @@
     "baseUrl": "./src",
     "paths": {
       "context/*": ["context/*"],
-      "services/*": ["services/*"],
+      "helpers/*": ["helpers/*"],
       "theme/*": ["theme/*"],
       "fonts/*": ["/assets/fonts/*"],
       "components/*": ["components/*"]

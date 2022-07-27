@@ -17,20 +17,39 @@ import {
 } from "react-icons/bs";
 import { useInput } from "context/InputContext";
 import { useWindowSize } from "usehooks-ts";
-import { setZoom } from "services/setZoom";
-import { getFuncKey } from "services/getFuncKey";
+import { setZoom } from "helpers/setZoom";
+import { getFuncKey } from "helpers/getFuncKey";
 import { IFunc } from "context/types";
+import { moveKeyboard } from "helpers/moveKeyboard";
+import { resetPos } from "helpers/resetPos";
 
 export const Keyboard = () => {
   const keyboardRef = useRef<SPEObject>();
   const { width } = useWindowSize();
 
-  const { input, setInput, setInputHistory, setFunc, func } = useInput();
+  const {
+    input,
+    setInput,
+    setInputHistory,
+    setFunc,
+    func,
+    setKeyboardPos,
+    keyboardPos,
+  } = useInput();
   const { lshift, rshift } = func;
 
   useEffect(() => {
-    console.log(func);
-  }, [func]);
+    console.log(keyboardPos);
+  }, [lshift]);
+
+  const getKeyboardPos = () => {
+    return {
+      ...keyboardRef.current?.position,
+      _x: keyboardRef.current?.rotation.x,
+      _y: keyboardRef.current?.rotation.y,
+      _z: keyboardRef.current?.rotation.z,
+    };
+  };
 
   const onMouseDown = (e: SplineEvent) => {
     const key = e.target.name;
@@ -58,6 +77,10 @@ export const Keyboard = () => {
       setInput((prevInput) => prevInput + " ".repeat(5));
       return;
     }
+    if (key === "space") {
+      setInput((prevInput) => prevInput + " ");
+      return;
+    }
     setInput((prevInput) => prevInput + key[lshift || rshift ? 1 : 0]);
   };
 
@@ -65,63 +88,52 @@ export const Keyboard = () => {
     const keyboard = spline.findObjectByName("keyboard");
     keyboardRef.current = keyboard;
     setZoom(spline);
-  };
-
-  const moveObject = (pos: number, axis: keyof SPEObject["position"]) => {
-    if (keyboardRef.current) {
-      keyboardRef.current.position[axis] += pos;
-    }
-  };
-  const rotateUp = (angle: number) => {
-    if (keyboardRef.current) {
-      if (keyboardRef.current.rotation.x > 0.3) {
-        return;
-      }
-      keyboardRef.current.rotation.x += angle;
-    }
-  };
-  const rotateDown = (angle: number) => {
-    if (keyboardRef.current) {
-      if (keyboardRef.current.rotation.x < -0.3) {
-        return;
-      }
-      keyboardRef.current.rotation.x += angle;
-    }
-  };
-  const resetPos = () => {
-    if (keyboardRef.current) {
-      keyboardRef.current.position.x = 0;
-      keyboardRef.current.position.y = 0;
-      keyboardRef.current.position.z = 0;
-      keyboardRef.current.rotation.x = 0;
-      keyboardRef.current.rotation.y = 0;
-      keyboardRef.current.rotation.z = 0;
-    }
+    setKeyboardPos(getKeyboardPos());
   };
 
   return (
     <KeyboardContainer>
       {width < 1000 && (
         <ButtonContainer>
-          <StyledButton onClick={() => moveObject(50, "x")}>
+          <StyledButton
+            onClick={() => {
+              moveKeyboard(keyboardRef, 50, "x");
+              setKeyboardPos(getKeyboardPos());
+            }}
+          >
             <BsArrowLeft />
           </StyledButton>
-          <StyledButton onClick={() => moveObject(25, "y")}>
+          <StyledButton
+            onClick={() => {
+              moveKeyboard(keyboardRef, 25, "y");
+              setKeyboardPos(getKeyboardPos());
+            }}
+          >
             <BsArrowUp />
           </StyledButton>
-          <StyledButton onClick={() => rotateDown(-Math.PI / 45)}>
+          <StyledButton
+            onClick={() => {
+              moveKeyboard(keyboardRef, -Math.PI / 45);
+              setKeyboardPos(getKeyboardPos());
+            }}
+          >
             <BsArrowClockwise />
           </StyledButton>
-          <StyledButton onClick={() => resetPos()}>
+          <StyledButton
+            onClick={() => {
+              resetPos(keyboardRef);
+              setKeyboardPos(getKeyboardPos());
+            }}
+          >
             <BsApp />
           </StyledButton>
-          <StyledButton onClick={() => rotateUp(Math.PI / 45)}>
+          <StyledButton onClick={() => moveKeyboard(keyboardRef, Math.PI / 45)}>
             <BsArrowCounterclockwise />
           </StyledButton>
-          <StyledButton onClick={() => moveObject(-25, "y")}>
+          <StyledButton onClick={() => moveKeyboard(keyboardRef, -25, "y")}>
             <BsArrowDown />
           </StyledButton>
-          <StyledButton onClick={() => moveObject(-50, "x")}>
+          <StyledButton onClick={() => moveKeyboard(keyboardRef, -50, "x")}>
             <BsArrowRight />
           </StyledButton>
         </ButtonContainer>

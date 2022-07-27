@@ -17,6 +17,15 @@ export interface IApp {
   hideInit: boolean;
 }
 
+export interface IKeyboardPos {
+  x?: number;
+  y?: number;
+  z?: number;
+  _x?: number;
+  _y?: number;
+  _z?: number;
+}
+
 export interface IContextProps {
   input: string;
   setInput: Dispatch<SetStateAction<string>>;
@@ -26,4 +35,6 @@ export interface IContextProps {
   setInputHistory: Dispatch<SetStateAction<string[]>>;
   appSetting: IApp;
   setAppSettings: Dispatch<SetStateAction<IApp>>;
+  keyboardPos: IKeyboardPos;
+  setKeyboardPos: Dispatch<SetStateAction<IKeyboardPos>>;
 }
