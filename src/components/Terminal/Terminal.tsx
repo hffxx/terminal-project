@@ -17,7 +17,7 @@ const num = getRandNumb(5);
 
 export const Terminal = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
-  const [loading, setLoading] = useState<any>({ init: true, packages: true });
+  const [loading, setLoading] = useState<any>({ init: false, packages: false });
   const [hideInit, setHideInit] = useState(false);
 
   const { input, setInput, inputHistory } = useInput();
