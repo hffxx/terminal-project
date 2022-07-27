@@ -76,7 +76,7 @@ to {
 }
 `;
 
-export const TerminalText = styled.p`
+export const TerminalText = styled.div`
   margin-top: 8px;
   font-size: 18px;
   line-height: 120%;

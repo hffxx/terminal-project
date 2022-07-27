@@ -25,7 +25,7 @@ export const Keyboard = () => {
       return;
     }
     if (e.target.name === "func space") {
-      setInput((prevInput) => (prevInput += " "));
+      setInput((prevInput) => (prevInput += "\xA0"));
       return;
     }
     if (e.target.name === "func backspace") {
@@ -35,6 +35,10 @@ export const Keyboard = () => {
     if (e.target.name === "func enter") {
       setInputHistory((prevHistory) => [...prevHistory, input]);
       setInput("");
+      return;
+    }
+    if (e.target.name === "func tab") {
+      setInput((prevInput) => (prevInput += "\xA0".repeat(5)));
       return;
     }
   };
