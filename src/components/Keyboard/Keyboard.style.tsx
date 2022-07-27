@@ -8,9 +8,6 @@ export const KeyboardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  canvas {
-    margin-bottom: 20px;
-  }
 `;
 
 export const ButtonContainer = styled.div`

@@ -6,7 +6,15 @@ import {
   StyledButton,
 } from "./Keyboard.style";
 import { Application, SPEObject } from "@splinetool/runtime";
-import { BsArrowLeft, BsArrowRight, BsApp } from "react-icons/bs";
+import {
+  BsArrowLeft,
+  BsArrowRight,
+  BsApp,
+  BsArrowClockwise,
+  BsArrowCounterclockwise,
+  BsArrowUp,
+  BsArrowDown,
+} from "react-icons/bs";
 import { useInput } from "context/InputContext";
 import { useWindowSize } from "usehooks-ts";
 import { setZoom } from "services/setZoom";
@@ -74,7 +82,7 @@ export const Keyboard = () => {
   };
   const rotateDown = (angle: number) => {
     if (keyboardRef.current) {
-      if (keyboardRef.current.rotation.x < -0.2) {
+      if (keyboardRef.current.rotation.x < -0.3) {
         return;
       }
       keyboardRef.current.rotation.x += angle;
@@ -95,19 +103,27 @@ export const Keyboard = () => {
     <KeyboardContainer>
       {width < 1000 && (
         <ButtonContainer>
-          <button onClick={() => moveObject(-25, "y")}>v</button>
           <StyledButton onClick={() => moveObject(50, "x")}>
             <BsArrowLeft />
           </StyledButton>
-          <button onClick={() => rotateDown(-Math.PI / 45)}>+</button>
+          <StyledButton onClick={() => moveObject(25, "y")}>
+            <BsArrowUp />
+          </StyledButton>
+          <StyledButton onClick={() => rotateDown(-Math.PI / 45)}>
+            <BsArrowClockwise />
+          </StyledButton>
           <StyledButton onClick={() => resetPos()}>
             <BsApp />
           </StyledButton>
-          <button onClick={() => rotateUp(Math.PI / 45)}>-</button>
+          <StyledButton onClick={() => rotateUp(Math.PI / 45)}>
+            <BsArrowCounterclockwise />
+          </StyledButton>
+          <StyledButton onClick={() => moveObject(-25, "y")}>
+            <BsArrowDown />
+          </StyledButton>
           <StyledButton onClick={() => moveObject(-50, "x")}>
             <BsArrowRight />
           </StyledButton>
-          <button onClick={() => moveObject(25, "y")}>^</button>
         </ButtonContainer>
       )}
       <Spline
