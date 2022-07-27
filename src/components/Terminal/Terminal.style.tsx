@@ -81,7 +81,6 @@ export const TerminalText = styled.div`
   font-size: 18px;
   line-height: 120%;
   overflow-wrap: anywhere;
-  position: relative;
   &:before {
     content: ">:";
     margin-right: 10px;
