@@ -20,9 +20,10 @@
       "context/*": ["context/*"],
       "services/*": ["services/*"],
       "theme/*": ["theme/*"],
-      "fonts/*": ["fonts/*"],
+      "fonts/*": ["/assets/fonts/*"],
       "components/*": ["components/*"]
     }
   },
-  "include": ["src"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

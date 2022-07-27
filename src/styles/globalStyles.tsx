@@ -1,5 +1,5 @@
 import * as styled from "styled-components";
-import ClaconTTF from "fonts/clacon2.ttf";
+import ClaconTTF from "assets/fonts/clacon2.ttf";
 import { ITheme } from "theme/styled";
 
 export default styled.createGlobalStyle<{ theme: ITheme }>`
