@@ -80,7 +80,7 @@ export const TerminalText = styled.p`
   margin-top: 8px;
   font-size: 18px;
   line-height: 120%;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   position: relative;
   &:before {
     content: ">:";
