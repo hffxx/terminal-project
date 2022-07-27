@@ -17,6 +17,8 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     rctrl: false,
     ralt: false,
     rshift: false,
+    fn: false,
+    caps: false,
   });
   const [appSetting, setAppSettings] = useState({
     init: false,

@@ -7,6 +7,8 @@ export interface IFunc {
   rctrl: boolean;
   ralt: boolean;
   rshift: boolean;
+  fn: boolean;
+  caps: boolean;
 }
 
 export interface IApp {
