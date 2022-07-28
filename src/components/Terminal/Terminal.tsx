@@ -80,7 +80,9 @@ export const Terminal = () => {
               return (
                 <>
                   <TerminalText key={i}>{word}</TerminalText>
-                  <TerminalText noPrefix>Test Response</TerminalText>
+                  {word.trim() !== "" && (
+                    <TerminalText noPrefix>Test Response</TerminalText>
+                  )}
                 </>
               );
             })}
