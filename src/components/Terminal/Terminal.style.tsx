@@ -76,16 +76,19 @@ to {
 }
 `;
 
-export const TerminalText = styled.div`
+export const TerminalText = styled.div<{ noPrefix?: boolean }>`
   margin-top: 8px;
   font-size: 18px;
   line-height: 120%;
   overflow-wrap: anywhere;
   white-space: pre-wrap;
-  &:before {
+  ${({ noPrefix }) =>
+    noPrefix
+      ? ""
+      : `&:before {
     content: ">:";
     margin-right: 10px;
-  }
+  }`}
   .cursor {
     background: green;
     width: 1px;

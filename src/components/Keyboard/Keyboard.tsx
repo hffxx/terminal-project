@@ -19,7 +19,7 @@ import { useInput } from "context/InputContext";
 import { useWindowSize } from "usehooks-ts";
 import { setZoom } from "helpers/setZoom";
 import { getFuncKey } from "helpers/getFuncKey";
-import { IFunc } from "context/types";
+import { IApp, IFunc } from "context/types";
 import { moveKeyboard } from "helpers/moveKeyboard";
 import { resetPos } from "helpers/resetPos";
 
@@ -35,6 +35,7 @@ export const Keyboard = () => {
     func,
     setKeyboardPos,
     keyboardPos,
+    setAppSettings,
   } = useInput();
   const { lshift, rshift } = func;
 
@@ -84,9 +85,12 @@ export const Keyboard = () => {
 
   const onLoad = (spline: Application) => {
     const keyboard = spline.findObjectByName("keyboard");
-    keyboardRef.current = keyboard;
-    setZoom(spline);
-    fetchKeyboardPos();
+    if (keyboard) {
+      keyboardRef.current = keyboard;
+      setZoom(spline);
+      fetchKeyboardPos();
+      setAppSettings((prevState: IApp) => ({ ...prevState, keyboard: true }));
+    }
   };
 
   return (

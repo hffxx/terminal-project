@@ -25,7 +25,7 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
 
   const [appSetting, setAppSettings] = useState({
     init: false,
-    packages: false,
+    keyboard: false,
     hideInit: false,
   });
 

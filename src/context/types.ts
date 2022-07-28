@@ -13,7 +13,7 @@ export interface IFunc {
 
 export interface IApp {
   init: boolean;
-  packages: boolean;
+  keyboard: boolean;
   hideInit: boolean;
 }
 

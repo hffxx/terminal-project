@@ -28,9 +28,6 @@ export const Terminal = () => {
     setTimeout(() => {
       setAppSettings((prevState: IApp) => ({ ...prevState, init: true }));
     }, 5000);
-    setTimeout(() => {
-      setAppSettings((prevState: IApp) => ({ ...prevState, packages: true }));
-    }, 10000);
   }, []);
   useEffect(() => {
     if (terminalRef.current) {
@@ -50,28 +47,37 @@ export const Terminal = () => {
           {!appSetting.hideInit && (
             <>
               {appSetting.init ? (
-                <TerminalText>{`Initialized done in ${num}s`}</TerminalText>
+                <TerminalText
+                  noPrefix
+                >{`Initialization done in ${num}s`}</TerminalText>
               ) : (
                 <TerminalText>
                   Initialization<AnimatedDot>.</AnimatedDot>
                 </TerminalText>
               )}
               {appSetting.init &&
-                (appSetting.packages ? (
-                  <TerminalText>Packages installation successful!</TerminalText>
+                (appSetting.keyboard ? (
+                  <>
+                    <TerminalText noPrefix>
+                      Keyboard installation successful!
+                    </TerminalText>
+                    <TerminalText noPrefix>
+                      Type yarn install to install packages
+                    </TerminalText>
+                  </>
                 ) : (
                   <TerminalText>
-                    Installing packages<AnimatedDot>.</AnimatedDot>
+                    Installing keyboard<AnimatedDot>.</AnimatedDot>
                   </TerminalText>
                 ))}
             </>
           )}
           {appSetting.init &&
-            appSetting.packages &&
+            appSetting.keyboard &&
             inputHistory.map((word, i) => {
               return <TerminalText key={i}>{word}</TerminalText>;
             })}
-          {appSetting.init && appSetting.packages && (
+          {appSetting.init && appSetting.keyboard && (
             <TerminalText>
               {input}
               <div className="cursor">&nbsp;</div>
