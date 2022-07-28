@@ -62,7 +62,9 @@ export const Terminal = () => {
                       Keyboard installation successful!
                     </TerminalText>
                     <TerminalText noPrefix>
-                      Type yarn install to install packages
+                      Type <span className="highlighted">yarn start</span> or
+                      <span className="highlighted"> npm start</span> to run the
+                      application.
                     </TerminalText>
                   </>
                 ) : (

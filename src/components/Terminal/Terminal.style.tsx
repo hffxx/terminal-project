@@ -98,6 +98,9 @@ export const TerminalText = styled.div<{ noPrefix?: boolean }>`
     opacity: 1;
     animation: ${blink} 1s steps(3, start) infinite;
   }
+  .highlighted {
+    color: rgb(63, 212, 13);
+  }
 `;
 
 export const AnimatedDot = styled.span`
