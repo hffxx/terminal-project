@@ -77,7 +77,12 @@ export const Terminal = () => {
           {appSetting.init &&
             appSetting.keyboard &&
             inputHistory.map((word, i) => {
-              return <TerminalText key={i}>{word}</TerminalText>;
+              return (
+                <>
+                  <TerminalText key={i}>{word}</TerminalText>
+                  <TerminalText noPrefix>Test Response</TerminalText>
+                </>
+              );
             })}
           {appSetting.init && appSetting.keyboard && (
             <TerminalText>
