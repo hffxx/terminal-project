@@ -31,4 +31,7 @@ export const StyledButton = styled.button`
   color: white;
   cursor: pointer;
   padding: 10px 10px 0;
+  &:disabled {
+    opacity: 0.2;
+  }
 `;

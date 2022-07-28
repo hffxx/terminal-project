@@ -18,12 +18,12 @@ export interface IApp {
 }
 
 export interface IKeyboardPos {
-  x?: number;
-  y?: number;
-  z?: number;
-  _x?: number;
-  _y?: number;
-  _z?: number;
+  x: number;
+  y: number;
+  z: number;
+  _x: number;
+  _y: number;
+  _z: number;
 }
 
 export interface IContextProps {

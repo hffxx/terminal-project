@@ -38,17 +38,15 @@ export const Keyboard = () => {
   } = useInput();
   const { lshift, rshift } = func;
 
-  useEffect(() => {
-    console.log(keyboardPos);
-  }, [lshift]);
-
   const fetchKeyboardPos = () => {
-    setKeyboardPos({
-      ...keyboardRef.current?.position,
-      _x: keyboardRef.current?.rotation.x,
-      _y: keyboardRef.current?.rotation.y,
-      _z: keyboardRef.current?.rotation.z,
-    });
+    if (keyboardRef.current) {
+      setKeyboardPos({
+        ...keyboardRef.current.position,
+        _x: keyboardRef.current.rotation.x,
+        _y: keyboardRef.current.rotation.y,
+        _z: keyboardRef.current.rotation.z,
+      });
+    }
   };
 
   const onMouseDown = (e: SplineEvent) => {
@@ -100,6 +98,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, 50, "x");
               fetchKeyboardPos();
             }}
+            disabled={keyboardPos.x >= 500}
           >
             <BsArrowLeft />
           </StyledButton>
@@ -108,6 +107,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, 25, "y");
               fetchKeyboardPos();
             }}
+            disabled={keyboardPos.y >= 100}
           >
             <BsArrowUp />
           </StyledButton>
@@ -116,6 +116,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, -Math.PI / 45);
               fetchKeyboardPos();
             }}
+            disabled={keyboardPos._x <= -0.35}
           >
             <BsArrowClockwise />
           </StyledButton>
@@ -127,13 +128,31 @@ export const Keyboard = () => {
           >
             <BsApp />
           </StyledButton>
-          <StyledButton onClick={() => moveKeyboard(keyboardRef, Math.PI / 45)}>
+          <StyledButton
+            onClick={() => {
+              moveKeyboard(keyboardRef, Math.PI / 45);
+              fetchKeyboardPos();
+            }}
+            disabled={keyboardPos._x >= 0.35}
+          >
             <BsArrowCounterclockwise />
           </StyledButton>
-          <StyledButton onClick={() => moveKeyboard(keyboardRef, -25, "y")}>
+          <StyledButton
+            onClick={() => {
+              moveKeyboard(keyboardRef, -25, "y");
+              fetchKeyboardPos();
+            }}
+            disabled={keyboardPos.y <= -100}
+          >
             <BsArrowDown />
           </StyledButton>
-          <StyledButton onClick={() => moveKeyboard(keyboardRef, -50, "x")}>
+          <StyledButton
+            onClick={() => {
+              moveKeyboard(keyboardRef, -50, "x");
+              fetchKeyboardPos();
+            }}
+            disabled={keyboardPos.x <= -500}
+          >
             <BsArrowRight />
           </StyledButton>
         </ButtonContainer>
