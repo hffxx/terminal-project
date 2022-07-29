@@ -87,7 +87,7 @@ export const Keyboard = () => {
     const keyboard = spline.findObjectByName("keyboard");
     if (keyboard) {
       keyboardRef.current = keyboard;
-      setZoom(spline);
+      setZoom(spline, keyboard);
       fetchKeyboardPos();
       setAppSettings((prevState: IApp) => ({ ...prevState, keyboard: true }));
     }
@@ -111,7 +111,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, 25, "y");
               fetchKeyboardPos();
             }}
-            disabled={keyboardPos.y >= 100}
+            disabled={keyboardPos.y >= (width < 770 ? 150 : 100)}
           >
             <BsArrowUp />
           </StyledButton>
@@ -146,7 +146,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, -25, "y");
               fetchKeyboardPos();
             }}
-            disabled={keyboardPos.y <= -100}
+            disabled={keyboardPos.y <= (width < 770 ? -50 : -100)}
           >
             <BsArrowDown />
           </StyledButton>
