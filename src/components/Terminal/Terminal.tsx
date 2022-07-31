@@ -21,8 +21,8 @@ const num = getRandNumb(5);
 export const Terminal = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
 
-  const { input, setInput, inputHistory, appSetting, setAppSettings } =
-    useInput();
+  const { input, inputHistory, appSetting, setAppSettings } = useInput();
+  const { init, hideInit, keyboard, inputLocked } = appSetting;
 
   useEffect(() => {
     setTimeout(() => {
@@ -44,9 +44,9 @@ export const Terminal = () => {
           </TerminalCloseButton>
         </TerminalTopbar>
         <TerminalBody ref={terminalRef} id="terminal-body">
-          {!appSetting.hideInit && (
+          {!hideInit && (
             <>
-              {appSetting.init ? (
+              {init ? (
                 <TerminalText
                   noPrefix
                 >{`Initialization done in ${num}s`}</TerminalText>
@@ -55,8 +55,8 @@ export const Terminal = () => {
                   Initialization<AnimatedDot>.</AnimatedDot>
                 </TerminalText>
               )}
-              {appSetting.init &&
-                (appSetting.keyboard ? (
+              {init &&
+                (keyboard ? (
                   <>
                     <TerminalText noPrefix>
                       Keyboard installation successful!
@@ -74,8 +74,8 @@ export const Terminal = () => {
                 ))}
             </>
           )}
-          {appSetting.init &&
-            appSetting.keyboard &&
+          {init &&
+            keyboard &&
             inputHistory.map((word, i) => {
               return (
                 <>
@@ -86,7 +86,7 @@ export const Terminal = () => {
                 </>
               );
             })}
-          {appSetting.init && appSetting.keyboard && (
+          {init && keyboard && inputLocked && (
             <TerminalText>
               {input}
               <div className="cursor">&nbsp;</div>

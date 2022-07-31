@@ -15,6 +15,7 @@ export interface IApp {
   init: boolean;
   keyboard: boolean;
   hideInit: boolean;
+  inputLocked: boolean;
 }
 
 export interface IKeyboardPos {
