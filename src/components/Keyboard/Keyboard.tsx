@@ -1,4 +1,4 @@
-import { useRef, useMemo, useState, useEffect } from "react";
+import { useRef } from "react";
 import Spline, { SplineEvent } from "@splinetool/react-spline";
 import {
   KeyboardContainer,
@@ -36,15 +36,18 @@ export const Keyboard = () => {
     setKeyboardPos,
     keyboardPos,
     setAppSettings,
+    appSettings,
   } = useInput();
   const { lshift, rshift } = func;
 
   const inputRef = useRef<string>();
   const lShiftRef = useRef<boolean>();
   const rShiftRef = useRef<boolean>();
+  const canWriteRef = useRef<boolean>();
   inputRef.current = input;
   lShiftRef.current = lshift;
   rShiftRef.current = rshift;
+  canWriteRef.current = appSettings.canWrite;
 
   const fetchKeyboardPos = () => {
     if (keyboardRef.current) {

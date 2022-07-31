@@ -21,8 +21,8 @@ const num = getRandNumb(5);
 export const Terminal = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
 
-  const { input, inputHistory, appSetting, setAppSettings } = useInput();
-  const { init, hideInit, keyboard, inputLocked } = appSetting;
+  const { input, inputHistory, appSettings, setAppSettings } = useInput();
+  const { init, hideInit, keyboard, canWrite } = appSettings;
 
   useEffect(() => {
     setTimeout(() => {
@@ -86,7 +86,7 @@ export const Terminal = () => {
                 </>
               );
             })}
-          {init && keyboard && inputLocked && (
+          {init && keyboard && canWrite && (
             <TerminalText>
               {input}
               <div className="cursor">&nbsp;</div>

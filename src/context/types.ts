@@ -15,7 +15,7 @@ export interface IApp {
   init: boolean;
   keyboard: boolean;
   hideInit: boolean;
-  inputLocked: boolean;
+  canWrite: boolean;
 }
 
 export interface IKeyboardPos {
@@ -34,7 +34,7 @@ export interface IContextProps {
   setFunc: Dispatch<SetStateAction<IFunc>>;
   inputHistory: string[];
   setInputHistory: Dispatch<SetStateAction<string[]>>;
-  appSetting: IApp;
+  appSettings: IApp;
   setAppSettings: Dispatch<SetStateAction<IApp>>;
   keyboardPos: IKeyboardPos;
   setKeyboardPos: Dispatch<SetStateAction<IKeyboardPos>>;

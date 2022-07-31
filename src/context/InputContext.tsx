@@ -23,11 +23,11 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     caps: false,
   });
 
-  const [appSetting, setAppSettings] = useState({
+  const [appSettings, setAppSettings] = useState({
     init: false,
     keyboard: false,
     hideInit: false,
-    inputLocked: false,
+    canWrite: true,
   });
 
   const [keyboardPos, setKeyboardPos] = useState({} as IKeyboardPos);
@@ -39,7 +39,7 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     setFunc,
     inputHistory,
     setInputHistory,
-    appSetting,
+    appSettings,
     setAppSettings,
     keyboardPos,
     setKeyboardPos,
