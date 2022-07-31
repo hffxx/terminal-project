@@ -8,7 +8,7 @@ export const RESPONSES: IResponse[] = [
   {
     id: 0,
     inputs: ["command-list"],
-    response: `author | cmd | cls `,
+    response: `author | cmd | cls`,
   },
   { id: 1, inputs: ["cls"] },
   { id: 2, inputs: ["author"], response: "Maciej Hoffmann HFX-SOFT " },
