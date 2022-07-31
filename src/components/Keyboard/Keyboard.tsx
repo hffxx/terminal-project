@@ -93,12 +93,11 @@ export const Keyboard = () => {
       return;
     }
     setInput((prevInput) => {
-      const input =
-        prevInput + key[lShiftRef.current || rShiftRef.current ? 1 : 0];
+      const nextLetter = key[lShiftRef.current || rShiftRef.current ? 1 : 0];
       if (capsRef.current) {
-        return input.toUpperCase();
+        return prevInput + nextLetter.toUpperCase();
       }
-      return input;
+      return prevInput + nextLetter;
     });
   };
 

@@ -61,9 +61,8 @@ export const Terminal = () => {
                       Keyboard installation successful!
                     </TerminalText>
                     <TerminalText noPrefix>
-                      Type <span className="highlighted">yarn start</span> or
-                      <span className="highlighted"> npm start</span> to run the
-                      application.
+                      Type <span className="highlighted">command-list</span> to
+                      show avaible commands.
                     </TerminalText>
                   </>
                 ) : (
@@ -77,14 +76,14 @@ export const Terminal = () => {
             keyboard &&
             inputHistory.map((word, i) => {
               return (
-                <>
-                  <TerminalText key={i}>{word}</TerminalText>
+                <div key={i}>
+                  <TerminalText>{word}</TerminalText>
                   {word.trim() !== "" && (
                     <TerminalText noPrefix>
                       {terminalResponse(word)}
                     </TerminalText>
                   )}
-                </>
+                </div>
               );
             })}
           {init && keyboard && canWrite && (

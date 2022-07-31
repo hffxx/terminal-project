@@ -5,6 +5,10 @@ export interface IResponse {
 }
 
 export const RESPONSES: IResponse[] = [
-  { id: 0, inputs: ["yarn start", "npm start"], response: "Starting the app" },
-  { id: 1, inputs: ["kocham cie"], response: "Ja Ciebie tez" },
+  {
+    id: 0,
+    inputs: ["command-list"],
+    response: "Command list coming soon.",
+  },
+  { id: 1, inputs: ["essa"], response: "essa wariacie" },
 ];
