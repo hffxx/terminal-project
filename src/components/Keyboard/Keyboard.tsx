@@ -39,6 +39,13 @@ export const Keyboard = () => {
   } = useInput();
   const { lshift, rshift } = func;
 
+  const inputRef = useRef<string>();
+  const lShiftRef = useRef<boolean>();
+  const rShiftRef = useRef<boolean>();
+  inputRef.current = input;
+  lShiftRef.current = lshift;
+  rShiftRef.current = rshift;
+
   const fetchKeyboardPos = () => {
     if (keyboardRef.current) {
       setKeyboardPos({
@@ -64,7 +71,7 @@ export const Keyboard = () => {
       return;
     }
     if (key === "enter") {
-      setInputHistory((prevHistory) => [...prevHistory, input]);
+      setInputHistory((prevHistory) => [...prevHistory, inputRef.current!]);
       setInput("");
       return;
     }
@@ -80,7 +87,10 @@ export const Keyboard = () => {
       setInput((prevInput) => prevInput + " ");
       return;
     }
-    setInput((prevInput) => prevInput + key[lshift || rshift ? 1 : 0]);
+    setInput(
+      (prevInput) =>
+        prevInput + key[lShiftRef.current || rShiftRef.current ? 1 : 0]
+    );
   };
 
   const onLoad = (spline: Application) => {
