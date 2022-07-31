@@ -55,10 +55,18 @@ export const Keyboard = () => {
     if (keyboardRef.current) {
       setKeyboardPos({
         ...keyboardRef.current.position,
-        _x: keyboardRef.current.rotation.x,
-        _y: keyboardRef.current.rotation.y,
-        _z: keyboardRef.current.rotation.z,
+        rx: keyboardRef.current.rotation.x,
+        ry: keyboardRef.current.rotation.y,
+        rz: keyboardRef.current.rotation.z,
       });
+    }
+  };
+
+  const executeCommand = (input: string) => {
+    const parsedInput = input.toLowerCase();
+    if (parsedInput === "cls") {
+      setInputHistory([]);
+      setAppSettings((prevValues) => ({ ...prevValues, hideInit: true }));
     }
   };
 
@@ -78,6 +86,7 @@ export const Keyboard = () => {
     if (key === "enter") {
       setInputHistory((prevHistory) => [...prevHistory, inputRef.current!]);
       setInput("");
+      executeCommand(inputRef.current!);
       return;
     }
     if (key === "backspace") {
@@ -138,7 +147,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, -Math.PI / 45);
               fetchKeyboardPos();
             }}
-            disabled={keyboardPos._x <= -0.35}
+            disabled={keyboardPos.rx <= -0.35}
           >
             <BsArrowClockwise />
           </StyledButton>
@@ -155,7 +164,7 @@ export const Keyboard = () => {
               moveKeyboard(keyboardRef, Math.PI / 45);
               fetchKeyboardPos();
             }}
-            disabled={keyboardPos._x >= 0.35}
+            disabled={keyboardPos.rx >= 0.35}
           >
             <BsArrowCounterclockwise />
           </StyledButton>

@@ -61,8 +61,8 @@ export const Terminal = () => {
                       Keyboard installation successful!
                     </TerminalText>
                     <TerminalText noPrefix>
-                      Type <span className="highlighted">command-list</span> to
-                      show avaible commands.
+                      Type <span className="highlighted">command-list </span>to
+                      show list of avaible commands.
                     </TerminalText>
                   </>
                 ) : (
@@ -74,13 +74,13 @@ export const Terminal = () => {
           )}
           {init &&
             keyboard &&
-            inputHistory.map((word, i) => {
+            inputHistory.map((input, i) => {
               return (
                 <div key={i}>
-                  <TerminalText>{word}</TerminalText>
-                  {word.trim() !== "" && (
+                  <TerminalText>{input}</TerminalText>
+                  {input.trim() !== "" && (
                     <TerminalText noPrefix>
-                      {terminalResponse(word)}
+                      {terminalResponse(input)}
                     </TerminalText>
                   )}
                 </div>

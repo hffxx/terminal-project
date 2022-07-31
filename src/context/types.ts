@@ -22,9 +22,9 @@ export interface IKeyboardPos {
   x: number;
   y: number;
   z: number;
-  _x: number;
-  _y: number;
-  _z: number;
+  rx: number;
+  ry: number;
+  rz: number;
 }
 
 export interface IContextProps {
