@@ -16,6 +16,7 @@ export interface IApp {
   keyboard: boolean;
   hideInit: boolean;
   canWrite: boolean;
+  hideTerminal: boolean;
 }
 
 export interface IKeyboardPos {

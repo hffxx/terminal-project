@@ -3,7 +3,7 @@ import {
   TerminalBackground,
   TerminalWrapper,
   TerminalTopbar,
-  TerminalCloseButton,
+  TerminalButton,
   TerminalBody,
   TerminalText,
   AnimatedDot,
@@ -22,7 +22,7 @@ export const Terminal = () => {
   const terminalRef = useRef<HTMLDivElement | null>(null);
 
   const { input, inputHistory, appSettings, setAppSettings } = useInput();
-  const { init, hideInit, keyboard, canWrite } = appSettings;
+  const { init, hideInit, keyboard, canWrite, hideTerminal } = appSettings;
 
   useEffect(() => {
     setTimeout(() => {
@@ -34,70 +34,81 @@ export const Terminal = () => {
       scrollToBottom("terminal-body");
     }
   }, [inputHistory]);
+
+  const toggleTerminal = (value: boolean) => {
+    setAppSettings((prevValues) => ({ ...prevValues, hideTerminal: value }));
+  };
+
   return (
     <TerminalWrapper>
-      <TerminalBackground>
-        <TerminalTopbar>
-          <span>HFX-SOFT v.1.0.0a</span>
-          <TerminalCloseButton>
-            <VscChromeClose />
-          </TerminalCloseButton>
-        </TerminalTopbar>
-        <TerminalBody ref={terminalRef} id="terminal-body">
-          {!hideInit && (
-            <>
-              {init ? (
-                <TerminalText
-                  noPrefix
-                >{`Initialization done in ${num}s`}</TerminalText>
-              ) : (
-                <TerminalText>
-                  Initialization<AnimatedDot>.</AnimatedDot>
-                </TerminalText>
-              )}
-              {init &&
-                (keyboard ? (
-                  <>
-                    <TerminalText noPrefix>
-                      Keyboard installation successful!
-                    </TerminalText>
-                    <TerminalText noPrefix>
-                      Type{" "}
-                      <span className="highlighted">
-                        {RESPONSES[0].inputs[0]}
-                      </span>{" "}
-                      to show list of avaible commands.
-                    </TerminalText>
-                  </>
+      {hideTerminal ? (
+        <TerminalButton padding="10px" onClick={() => toggleTerminal(false)}>
+          Reload Terminal
+        </TerminalButton>
+      ) : (
+        <TerminalBackground>
+          <TerminalTopbar>
+            <span>HFX-SOFT v.1.0.0a</span>
+            <TerminalButton onClick={() => toggleTerminal(true)}>
+              <VscChromeClose />
+            </TerminalButton>
+          </TerminalTopbar>
+          <TerminalBody ref={terminalRef} id="terminal-body">
+            {!hideInit && (
+              <>
+                {init ? (
+                  <TerminalText
+                    noPrefix
+                  >{`Initialization done in ${num}s`}</TerminalText>
                 ) : (
                   <TerminalText>
-                    Installing keyboard<AnimatedDot>.</AnimatedDot>
+                    Initialization<AnimatedDot>.</AnimatedDot>
                   </TerminalText>
-                ))}
-            </>
-          )}
-          {init &&
-            keyboard &&
-            inputHistory.map((input, i) => {
-              return (
-                <div key={i}>
-                  <TerminalText>{input}</TerminalText>
-                  {input.trim() !== "" && (
-                    <TerminalText noPrefix>
-                      {terminalResponse(input)}
+                )}
+                {init &&
+                  (keyboard ? (
+                    <>
+                      <TerminalText noPrefix>
+                        Keyboard installation successful!
+                      </TerminalText>
+                      <TerminalText noPrefix>
+                        Type{" "}
+                        <span className="highlighted">
+                          {RESPONSES[0].inputs[0]}
+                        </span>{" "}
+                        to show list of avaible commands.
+                      </TerminalText>
+                    </>
+                  ) : (
+                    <TerminalText>
+                      Installing keyboard<AnimatedDot>.</AnimatedDot>
                     </TerminalText>
-                  )}
-                </div>
-              );
-            })}
-          {init && keyboard && canWrite && (
-            <TerminalText>
-              {input}
-              <div className="cursor"> </div>
-            </TerminalText>
-          )}
-        </TerminalBody>
-      </TerminalBackground>
+                  ))}
+              </>
+            )}
+            {init &&
+              keyboard &&
+              inputHistory.map((input, i) => {
+                return (
+                  <div key={i}>
+                    <TerminalText>{input}</TerminalText>
+                    {input.trim() !== "" && (
+                      <TerminalText noPrefix>
+                        {terminalResponse(input)}
+                      </TerminalText>
+                    )}
+                  </div>
+                );
+              })}
+            {init && keyboard && canWrite && (
+              <TerminalText>
+                {input}
+                <div className="cursor"> </div>
+              </TerminalText>
+            )}
+          </TerminalBody>
+        </TerminalBackground>
+      )}
     </TerminalWrapper>
   );
 };

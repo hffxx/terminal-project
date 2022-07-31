@@ -28,6 +28,7 @@ export const InputProvider = ({ children }: { children: ReactNode }) => {
     keyboard: false,
     hideInit: false,
     canWrite: true,
+    hideTerminal: false,
   });
 
   const [keyboardPos, setKeyboardPos] = useState({} as IKeyboardPos);

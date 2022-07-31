@@ -1,6 +1,9 @@
 import styled, { keyframes } from "styled-components";
 
 export const TerminalWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 950px;
   width: 100%;
   height: 50%;
@@ -26,9 +29,7 @@ export const TerminalTopbar = styled.div`
   color: white;
   margin-bottom: 1px;
 `;
-export const TerminalCloseButton = styled.button`
-  width: 18px;
-  height: 18px;
+export const TerminalButton = styled.button<{ padding?: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +37,7 @@ export const TerminalCloseButton = styled.button`
   background: #bdc0bf;
   font-size: 16px;
   cursor: pointer;
+  padding: ${({ padding }) => (padding ? padding : "0")};
 `;
 export const TerminalBody = styled.div`
   background: black;
