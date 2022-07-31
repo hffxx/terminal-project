@@ -38,16 +38,18 @@ export const Keyboard = () => {
     setAppSettings,
     appSettings,
   } = useInput();
-  const { lshift, rshift } = func;
+  const { lshift, rshift, caps } = func;
 
   const inputRef = useRef<string>();
   const lShiftRef = useRef<boolean>();
   const rShiftRef = useRef<boolean>();
   const canWriteRef = useRef<boolean>();
+  const capsRef = useRef<boolean>();
   inputRef.current = input;
   lShiftRef.current = lshift;
   rShiftRef.current = rshift;
   canWriteRef.current = appSettings.canWrite;
+  capsRef.current = caps;
 
   const fetchKeyboardPos = () => {
     if (keyboardRef.current) {
@@ -62,7 +64,7 @@ export const Keyboard = () => {
 
   const onMouseDown = (e: SplineEvent) => {
     const key = e.target.name;
-    if (key === "obj") {
+    if (key.includes("obj")) {
       return;
     }
     if (key.includes("func")) {
@@ -90,10 +92,14 @@ export const Keyboard = () => {
       setInput((prevInput) => prevInput + " ");
       return;
     }
-    setInput(
-      (prevInput) =>
-        prevInput + key[lShiftRef.current || rShiftRef.current ? 1 : 0]
-    );
+    setInput((prevInput) => {
+      const input =
+        prevInput + key[lShiftRef.current || rShiftRef.current ? 1 : 0];
+      if (capsRef.current) {
+        return input.toUpperCase();
+      }
+      return input;
+    });
   };
 
   const onLoad = (spline: Application) => {

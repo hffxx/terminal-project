@@ -10,11 +10,10 @@ import {
 } from "./Terminal.style";
 import { useInput } from "context/InputContext";
 import { IApp } from "context/types";
-
 import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "helpers/scrollToBottom";
-
 import { getRandNumb } from "helpers/getRandNum";
+import { terminalResponse } from "helpers/terminalResponse";
 
 const num = getRandNumb(5);
 
@@ -81,7 +80,9 @@ export const Terminal = () => {
                 <>
                   <TerminalText key={i}>{word}</TerminalText>
                   {word.trim() !== "" && (
-                    <TerminalText noPrefix>Test Response</TerminalText>
+                    <TerminalText noPrefix>
+                      {terminalResponse(word)}
+                    </TerminalText>
                   )}
                 </>
               );
@@ -89,7 +90,7 @@ export const Terminal = () => {
           {init && keyboard && canWrite && (
             <TerminalText>
               {input}
-              <div className="cursor">&nbsp;</div>
+              <div className="cursor"> </div>
             </TerminalText>
           )}
         </TerminalBody>
