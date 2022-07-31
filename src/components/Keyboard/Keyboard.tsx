@@ -72,6 +72,7 @@ export const Keyboard = () => {
 
   const onMouseDown = (e: SplineEvent) => {
     const key = e.target.name;
+    const input = inputRef.current!;
     if (key.includes("obj")) {
       return;
     }
@@ -84,9 +85,9 @@ export const Keyboard = () => {
       return;
     }
     if (key === "enter") {
-      setInputHistory((prevHistory) => [...prevHistory, inputRef.current!]);
+      setInputHistory((prevHistory) => [...prevHistory, input]);
       setInput("");
-      executeCommand(inputRef.current!);
+      executeCommand(input);
       return;
     }
     if (key === "backspace") {
@@ -103,10 +104,9 @@ export const Keyboard = () => {
     }
     setInput((prevInput) => {
       const nextLetter = key[lShiftRef.current || rShiftRef.current ? 1 : 0];
-      if (capsRef.current) {
-        return prevInput + nextLetter.toUpperCase();
-      }
-      return prevInput + nextLetter;
+      return capsRef.current
+        ? prevInput + nextLetter.toUpperCase()
+        : prevInput + nextLetter;
     });
   };
 
