@@ -7,7 +7,7 @@ export interface IResponse {
 export const RESPONSES: IResponse[] = [
   {
     id: 0,
-    inputs: ["command-list"],
+    inputs: ["help"],
     response: `author | cmd | cls`,
   },
   { id: 1, inputs: ["cls"] },

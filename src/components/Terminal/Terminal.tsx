@@ -14,6 +14,7 @@ import { VscChromeClose } from "react-icons/vsc";
 import { scrollToBottom } from "helpers/scrollToBottom";
 import { getRandNumb } from "helpers/getRandNum";
 import { terminalResponse } from "helpers/terminalResponse";
+import { RESPONSES } from "data/responses";
 
 const num = getRandNumb(5);
 
@@ -61,8 +62,11 @@ export const Terminal = () => {
                       Keyboard installation successful!
                     </TerminalText>
                     <TerminalText noPrefix>
-                      Type <span className="highlighted">command-list </span>to
-                      show list of avaible commands.
+                      Type{" "}
+                      <span className="highlighted">
+                        {RESPONSES[0].inputs[0]}
+                      </span>{" "}
+                      to show list of avaible commands.
                     </TerminalText>
                   </>
                 ) : (
