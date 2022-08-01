@@ -15,6 +15,7 @@ import { scrollToBottom } from "helpers/scrollToBottom";
 import { getRandNumb } from "helpers/getRandNum";
 import { terminalResponse } from "helpers/terminalResponse";
 import { RESPONSES } from "data/responses";
+import { Interweave } from "interweave";
 
 const num = getRandNumb(5);
 
@@ -72,10 +73,8 @@ export const Terminal = () => {
                         Keyboard installation successful!
                       </TerminalText>
                       <TerminalText noPrefix>
-                        Type{" "}
-                        <span className="highlighted">
-                          {RESPONSES[0].inputs[0]}
-                        </span>{" "}
+                        Type
+                        <span className="highlighted"> help </span>
                         to show list of avaible commands.
                       </TerminalText>
                     </>
@@ -86,21 +85,20 @@ export const Terminal = () => {
                   ))}
               </>
             )}
-            {init &&
-              keyboard &&
+            {keyboard &&
               inputHistory.map((input, i) => {
                 return (
                   <div key={i}>
                     <TerminalText>{input}</TerminalText>
                     {input.trim() !== "" && (
                       <TerminalText noPrefix>
-                        {terminalResponse(input)}
+                        <Interweave noWrap content={terminalResponse(input)} />
                       </TerminalText>
                     )}
                   </div>
                 );
               })}
-            {init && keyboard && canWrite && (
+            {keyboard && canWrite && (
               <TerminalText>
                 {input}
                 <div className="cursor"> </div>

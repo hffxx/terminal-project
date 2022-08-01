@@ -67,6 +67,7 @@ export const Keyboard = () => {
     if (parsedInput === "cls") {
       setInputHistory([]);
       setAppSettings((prevValues) => ({ ...prevValues, hideInit: true }));
+      return;
     }
   };
 

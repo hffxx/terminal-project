@@ -5,7 +5,7 @@ export const terminalResponse = (input: string) => {
     return;
   }
   const responseData = RESPONSES.find((res) => {
-    return res.inputs.includes(input.toLowerCase());
+    return res.input === input.toLowerCase();
   });
   if (responseData) {
     return responseData.response;
