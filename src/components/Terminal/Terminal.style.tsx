@@ -100,8 +100,17 @@ export const TerminalText = styled.div<{ noPrefix?: boolean }>`
     opacity: 1;
     animation: ${blink} 1s steps(3, start) infinite;
   }
-  span {
-    color: rgb(63, 212, 13);
+  a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    &:first-of-type {
+      margin-top: 5px;
+    }
+  }
+  .logo {
+    width: 20px;
   }
 `;
 

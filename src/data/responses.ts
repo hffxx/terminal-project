@@ -1,3 +1,5 @@
+import linkedinLogo from "../assets/images/linkedin.svg";
+import githubLogo from "../assets/images/github.svg";
 export interface IResponse {
   id: number;
   input: string;
@@ -14,8 +16,7 @@ export const RESPONSES: IResponse[] = [
   {
     id: 2,
     input: "author",
-    response:
-      "Maciej Hoffmann</br><a href='https://www.linkedin.com/in/maciej-hoffmann-5077b4234/' target='_blank'>LinkedIn</a> <a href='https://github.com/hffxx' target='_blank'>GitHub</a>",
+    response: `<span>Maciej Hoffmann<span><a href='https://www.linkedin.com/in/maciej-hoffmann-5077b4234/' target='_blank'><div><img alt='linkedin' src=${linkedinLogo}/ class="logo"></div><span>LinkedIn</span></a><a href='https://github.com/hffxx' target='_blank'><div><img alt='github' src=${githubLogo}/ class="logo"><span>GitHub</span></a>`,
   },
   {
     id: 3,
