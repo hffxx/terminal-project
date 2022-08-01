@@ -20,17 +20,22 @@ export const ButtonContainer = styled.div`
   left: 50%;
   display: flex;
   justify-content: space-between;
-  width: 90%;
   padding: 0 20px;
   background: rgba(189, 189, 189, 0.3);
   width: 100%;
+  border-radius: 0;
+  ${({ theme }) => theme.sizes.mediaQueries.laptopS} {
+    max-width: 1500px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+  }
 `;
 
 export const StyledButton = styled.button`
   font-size: 25px;
   color: white;
   cursor: pointer;
-  padding: 10px 10px 0;
+  padding: 10px;
   &:disabled {
     opacity: 0.2;
   }
