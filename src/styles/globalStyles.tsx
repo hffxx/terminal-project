@@ -27,12 +27,6 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
     background: black;
     color: green;
     overflow: hidden;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -44,9 +38,6 @@ export default styled.createGlobalStyle<{ theme: ITheme }>`
   }
   ::-webkit-scrollbar-thumb {
     background-color: #bdc0bf;
-  }
-  code {
-    font-family: source-code-pro;
   }
   a {
     color: #00b300;
