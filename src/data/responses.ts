@@ -8,14 +8,14 @@ export const RESPONSES: IResponse[] = [
   {
     id: 0,
     input: "help",
-    response: `List of avaible commands: author | cmd | cls`,
+    response: `List of avaible commands: <span>author</span> | <span>cmd</span> | <span>cls</span>`,
   },
   { id: 1, input: "cls" },
   {
     id: 2,
     input: "author",
     response:
-      "Maciej Hoffmann <a href='https://www.linkedin.com/in/maciej-hoffmann-5077b4234/' target='_blank'>LinkedIn</a> <a href='https://github.com/hffxx' target='_blank'>GitHub</a>",
+      "Maciej Hoffmann</br><a href='https://www.linkedin.com/in/maciej-hoffmann-5077b4234/' target='_blank'>LinkedIn</a> <a href='https://github.com/hffxx' target='_blank'>GitHub</a>",
   },
   {
     id: 3,

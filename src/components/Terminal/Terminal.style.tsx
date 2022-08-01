@@ -100,7 +100,7 @@ export const TerminalText = styled.div<{ noPrefix?: boolean }>`
     opacity: 1;
     animation: ${blink} 1s steps(3, start) infinite;
   }
-  .highlighted {
+  span {
     color: rgb(63, 212, 13);
   }
 `;

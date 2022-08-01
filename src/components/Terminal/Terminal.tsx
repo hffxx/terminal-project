@@ -74,7 +74,7 @@ export const Terminal = () => {
                       </TerminalText>
                       <TerminalText noPrefix>
                         Type
-                        <span className="highlighted"> help </span>
+                        <span> help </span>
                         to show list of avaible commands.
                       </TerminalText>
                     </>
